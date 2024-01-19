@@ -1,0 +1,42 @@
+$$$ go generate ./... error : 
+./binding/grpcutil/testservice/generate.sh: line 23: protoc: command not found
+generate.go:17: running "./binding/grpcutil/testservice/generate.sh": exit status 127
+$$$
+//127: Command not found—The command was not found in the system's PATH, indicating that either the command does not exist or the PATH variable is incorrectly set.
+
+There are two ways to install the protobuf compiler. If you're on Ubuntu you can use this:
+
+sudo apt install protobuf-compiler
+
+Then of course there's the standard way:
+
+go get -u google.golang.org/protobuf
+
+Here forward it's just adding the path. Assuming when you installed Go you did this,
+
+echo 'export GOPATH=$HOME/Go' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+Now you can just extend this:
+
+echo 'export PATH=$PATH:$GOPATH/bin' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+Strangely protoc can't expand ~.
+
+>>>> Another way
+
+For Linux Ubuntu 20, only install with snap
+
+snap install protobuf --classic
+
+or via apt, with:
+
+sudo apt install protobuf-compiler
+
+>>> go generate ./...
+>>> sudo rm -r public
+=================================================================================================================================
+
+
+
