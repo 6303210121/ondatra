@@ -1,0 +1,34 @@
+func (n *Keychain_NamePath) State() ygnmi.SingletonQuery[string] {
+        return ygnmi.NewSingletonQuery[string](
+                "Keychain",
+                true,
+                false,
+                true,
+                true,
+                true,
+                false,
+                ygnmi.NewNodePath(
+                        []string{"state", "name"},
+                        nil,
+                        n.parent,
+                ),
+                func(gs ygot.ValidatedGoStruct) (string, bool) { 
+                        ret := gs.(*oc.Keychain).Name
+                        if ret == nil {
+                                var zero string
+                                return zero, false
+                        }
+                        return *ret, true
+                },
+                func() ygot.ValidatedGoStruct { return new(oc.Keychain) },
+                func() *ytypes.Schema {
+                        return &ytypes.Schema{
+                                Root:       &oc.Root{},
+                                SchemaTree: oc.SchemaTree,
+                                Unmarshal:  oc.Unmarshal,
+                        }
+                },
+                nil,
+                nil,
+        )
+}
