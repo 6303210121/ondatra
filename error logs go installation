@@ -1,0 +1,173 @@
+Errors while running go generate ./...
+We need to install golang 
+
+Go version error:- Installation of golang, we used command 
+
+# sudo apt install golang-go
+
+1.18 version is installed. (by default)
+
+Version upgrade error-
+ go generate ./... -> it requires 1.19 version.
+
+# wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
+
+# sudo tar -xvf go1.19.linux-amd64.tar.gz
+
+1.19 version got upgraded using these two commands.
+
+----------------------------
+
+
+
+
+-----------------------------
+To directly install 1.21. version-
+
+# wget https://go.dev/dl/go1.21.linux-amd64.tar.gz
+
+# sudo tar -xvf go1.21.linux-amd64.tar.gz
+
+If above doesn't work- Try to uninstall current goversion (<1.19) and upgrade version (1.19,1.21)-
+
+# cd /usr/local/bin (ls--> go)
+# sudo rm go (or) rm -rf go
+
+# wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
+
+# sudo tar -xvf go1.19.linux-amd64.tar.gz (go version 1.19)
+
+
+To Upgrade goversion from 1.19 to 1.21
+
+# sudo mv go /usr/local
+# export GOROOT=/usr/local/go
+# export GOPATH=$HOME/go
+# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+# source ~/.profile
+# go version
+
+Error -even after updating version, if version got downgraded while closing terminal-
+
+# ~/.bashrc (error- permission denied)
+ 
+To grant permission
+# sudo chown $tcs:$tcs ~/.bashrc
+# chmod 644 ~/.bashrc
+# nano ~/.bashrc (file opens)
+ To save file- click CTRL+O and click ^, Y 
+
+---------------------------------
+
+exit status 127,128,1 Errors and log commands
+
+
+
+
+
+----------------------------------
+
+errors after updating goversion-
+
+1. protoc-gen-go-grpc: program not found or is not executable
+
+# go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+# go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+To check path- 
+# go env GOPATH (we will get home/tcs/go)
+
+go generate ./...
+
+
+-------------------------
+2.fatal: destination path 'public' already exists and is not an empty directory.
+generate.go:18: running "./gnmi/generate.sh": exit status 128
+
+#rm -r public (or) rm -rf public
+
+go generate ./...
+
+fatal: destination path 'models-yang' already exists and is not an empty directory.
+generate.go:18: running "./gnmi/generate.sh": exit status 128
+
+#rm -r models-yang (or) rm -rf models-yang
+
+
+go generate ./...
+
+fatal: destination path 'gnsi' already exists and is not an empty directory.
+generate.go:18: running "./gnmi/generate.sh": exit status 128
+
+#rm -r gnsi (or) rm -rf gnsi
+
+
+---------------------------
+3.$$ go generate ./... error : 
+./binding/grpcutil/testservice/generate.sh: line 23: protoc: command not found
+generate.go:17: running "./binding/grpcutil/testservice/generate.sh": exit status 127
+$$$
+//127: Command not found—The command was not found in the system's PATH, indicating that either the command does not exist or the PATH variable is incorrectly set.
+
+There are two ways to install the protobuf compiler. If you're on Ubuntu you can use this:
+
+sudo apt install protobuf-compiler
+
+Then of course there's the standard way:
+
+go get -u google.golang.org/protobuf
+
+Here forward it's just adding the path. Assuming when you installed Go you did this,
+
+echo 'export GOPATH=$HOME/Go' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+Now you can just extend this:
+
+echo 'export PATH=$PATH:$GOPATH/bin' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+Strangely protoc can't expand ~.
+
+>>>> Another way
+
+For Linux Ubuntu 20, only install with snap
+
+snap install protobuf --classic
+
+or via apt, with:
+
+sudo apt install protobuf-compiler
+-------------------------------------
+When we get the errors as (i)HEAD is now at c2ebf3e(same format)Adds missing import_prerfix and (ii)findimports:no such file or directory,then
+->to resolve goimports issue,then use command
+#go get -u (or)
+if not installed uysing above command,then use #go get golang.org/x/tools/cmd/goimports
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
