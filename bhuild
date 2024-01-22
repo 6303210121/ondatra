@@ -111,3 +111,22 @@ tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go build ./...
 # github.com/openconfig/ondatra/binding
 binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
 binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+
+go get -u github.com/openconfig/ondatra/gosnappi
+go: github.com/openconfig/ondatra/gosnappi: no matching versions for query "upgrade"
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go mod verify
+all modules verified
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go apt-get -u github.com/openconfig/ondatra/gosnappi
+go apt-get: unknown command
+Run 'go help' for usage.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go install -u github.com/openconfig/ondatra/gosnappi
+flag provided but not defined: -u
+usage: go install [build flags] [packages]
+Run 'go help install' for details.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go install github.com/openconfig/ondatra/gosnappi
+no required module provides package github.com/openconfig/ondatra/gosnappi; to add it:
+	go get github.com/openconfig/ondatra/gosnappi
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go get github.com/openconfig/ondatra/gosnappi
+
+go: github.com/openconfig/ondatra/gosnappi: no matching versions for query "upgrade"
+
