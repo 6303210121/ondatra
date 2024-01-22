@@ -1,0 +1,6 @@
+#
+#
+#
+
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go generate ./...
+generate.go:18: running "./gnmi/generate.sh": exit status 1
