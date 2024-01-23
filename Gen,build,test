@@ -1,0 +1,271 @@
+I'll help you troubleshoot the "protoc-gen-go-grpc: program not going" error.
+Here are the steps to address this issue:
+1. Installation Verification:
+● Check installation: Ensure you've installed protoc-gen-go-grpc using:
+Bash
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+● Verify installation path: Run which protoc-gen-go-grpc to check its location.
+● Confirm execution: If installed, try running protoc-gen-go-grpc --version.
+2. PATH Configuration:
+● Add to PATH: If the path isn't in your PATH environment variable, add it temporarily:
+Bash
+export PATH=<span class="math-inline">PATH\:</span>(go env
+GOPATH)/bin
+● Make permanent: Add the path to your shell configuration file (e.g., .bashrc or .zshrc) for
+persistence.
+3. Plugin Usage:
+● Correct flag: Use --go-grpc_out (with underscore) when running protoc:
+Bash
+protoc --go_out=plugins=grpc:. *.proto
+4. Version Compatibility:
+● Check compatibility: Ensure protoc-gen-go-grpc is compatible with your protoc version.
+Update if necessary.
+5. Reinstalling Dependencies:
+● Resolve conflicts: Reinstalling protoc-gen-go-grpc and protoc can sometimes fix issues:
+Bash
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+ 
+6. Permissions:
+● Ensure execute permissions: The protoc-gen-go-grpc binary should have execute
+permissions:
+Bash
+chmod +x $(which protoc-gen-go-grpc)
+7. Conflicting Versions:
+● Check multiple installations: If you have multiple versions of protoc-gen-go-grpc, ensure
+you're using the correct one.
+8. Environment Variables:
+● Review environment variables: Check for any environment variables that might interfere
+with plugin discovery.
+9. Thorough Error Output:
+● Provide full error message: Share the complete error output for more specific guidance.
+Additional Tips:
+● Clean build: Try cleaning your project's build cache and rebuilding.
+● IDE configuration: If using an IDE, ensure it's configured correctly for protoc and plugins.
+I'm here to assist further as you provide more details and we work through the troubleshooting
+process.
+Sources
+1. https://docs.nvidia.com/deeplearning/riva/user-guide/docs/development-golang.html
+
+#go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+#go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go generate ./...
+generate.go:18: running "./gnmi/generate.sh": exit status 1
+
+_______________
+go build ./...
+go: downloading golang.org/x/net v0.20.0
+go: downloading google.golang.org/grpc v1.60.1
+go: downloading google.golang.org/protobuf v1.32.0
+go: downloading github.com/golang/glog v1.2.0
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/open-traffic-generator/snappi/gosnappi v0.13.7
+go: downloading github.com/openconfig/gnmi v0.10.0
+go: downloading github.com/openconfig/gnoigo v0.0.0-20231026010722-87413fdb22e7
+go: downloading github.com/openconfig/gnsi v1.2.4
+go: downloading github.com/openconfig/gribi v1.0.0
+go: downloading github.com/p4lang/p4runtime v1.3.0
+go: downloading github.com/openconfig/goyang v1.4.5
+go: downloading github.com/openconfig/ygot v0.29.18
+go: downloading github.com/openconfig/ygnmi v0.11.1
+go: downloading github.com/openconfig/gocloser v0.0.0-20220310182203-c6c950ed3b0b
+go: downloading github.com/jstemmer/go-junit-report/v2 v2.1.0
+go: downloading github.com/patrickmn/go-cache v2.1.0+incompatible
+go: downloading github.com/openconfig/kne v0.1.14
+go: downloading github.com/pborman/uuid v1.2.1
+go: downloading golang.org/x/crypto v0.18.0
+go: downloading github.com/openconfig/entity-naming v0.0.0-20230912181021-7ac806551a31
+go: downloading golang.org/x/exp v0.0.0-20240112132812-db7319d0e0e3
+go: downloading gopkg.in/yaml.v2 v2.4.0
+go: downloading go.opencensus.io v0.24.0
+go: downloading golang.org/x/sys v0.16.0
+go: downloading google.golang.org/genproto/googleapis/rpc
+v0.0.0-20240116215550-a9fa1716bcac
+go: downloading github.com/openconfig/gnoi v0.3.0
+go: downloading google.golang.org/genproto v0.0.0-20240102182953-50ed04b92917
+go: downloading github.com/Masterminds/semver/v3 v3.2.1
+go: downloading github.com/ghodss/yaml v1.0.0
+go: downloading github.com/golang/protobuf v1.5.3
+go: downloading github.com/google/go-cmp v0.6.0
+go: downloading github.com/kylelemons/godebug v1.1.0
+go: downloading github.com/openconfig/grpctunnel v0.0.0-20220819142823-6f5422b8ca70
+go: downloading github.com/google/uuid v1.4.0
+go: downloading github.com/kr/pretty v0.3.1
+go: downloading github.com/networkop/meshnet-cni v0.3.1-0.20230525201116-d7c306c635cf
+go: downloading k8s.io/api v0.26.3
+go: downloading k8s.io/apimachinery v0.26.3
+go: downloading k8s.io/client-go v0.26.3
+go: downloading k8s.io/klog/v2 v2.90.1
+go: downloading github.com/scrapli/scrapligo v1.1.7
+go: downloading k8s.io/utils v0.0.0-20230313181309-38a27ef9d749
+go: downloading github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
+go: downloading github.com/cenkalti/backoff/v4 v4.1.3
+go: downloading github.com/kr/text v0.2.0
+go: downloading github.com/rogpeppe/go-internal v1.9.0
+go: downloading cloud.google.com/go/pubsub v1.33.0
+go: downloading github.com/aristanetworks/arista-ceoslab-operator/v2 v2.0.1
+go: downloading github.com/scrapli/scrapligocfg v1.0.0
+go: downloading cloud.google.com/go v0.111.0
+go: downloading github.com/open-traffic-generator/ixia-c-operator v0.3.4
+go: downloading github.com/srl-labs/srl-controller v0.6.0
+go: downloading github.com/srl-labs/srlinux-scrapli v0.6.0
+go: downloading sigs.k8s.io/controller-runtime v0.14.5
+go: downloading github.com/openconfig/lemming/operator v0.2.0
+go: downloading github.com/gogo/protobuf v1.3.2
+go: downloading github.com/google/gofuzz v1.2.0
+go: downloading github.com/go-logr/logr v1.2.4
+go: downloading github.com/imdario/mergo v0.3.14
+go: downloading github.com/spf13/pflag v1.0.5
+go: downloading golang.org/x/term v0.16.0
+go: downloading github.com/sirikothe/gotextfsm v1.0.1-0.20200816110946-6aa2cfd355e4
+go: downloading gopkg.in/inf.v0 v0.9.1
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading cloud.google.com/go/iam v1.1.5
+go: downloading github.com/googleapis/gax-go/v2 v2.12.0
+go: downloading golang.org/x/sync v0.5.0
+go: downloading google.golang.org/api v0.153.0
+go: downloading sigs.k8s.io/structured-merge-diff/v4 v4.2.3
+go: downloading github.com/evanphx/json-patch/v5 v5.6.0
+go: downloading golang.org/x/time v0.5.0
+go: downloading github.com/google/gnostic v0.6.9
+go: downloading github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
+go: downloading golang.org/x/oauth2 v0.15.0
+go: downloading github.com/creack/pty v1.1.18
+go: downloading golang.org/x/text v0.14.0
+go: downloading google.golang.org/genproto/googleapis/api
+v0.0.0-20231212172506-995d672761c0
+go: downloading github.com/carlmontanari/difflibgo v0.0.0-20210718194309-31b9e131c298
+go: downloading sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd
+go: downloading k8s.io/kube-openapi v0.0.0-20230308215209-15aac26d736a
+go: downloading sigs.k8s.io/yaml v1.3.0
+go: downloading github.com/json-iterator/go v1.1.12
+go: downloading github.com/moby/spdystream v0.2.0
+go: downloading cloud.google.com/go/compute/metadata v0.2.3
+go: downloading cloud.google.com/go/compute v1.23.3
+go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: downloading github.com/modern-go/reflect2 v1.0.2
+go: downloading github.com/google/s2a-go v0.1.7
+go: downloading github.com/googleapis/enterprise-certificate-proxy v0.3.2
+go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+go: downloading github.com/emicklei/go-restful/v3 v3.10.2
+go: downloading github.com/go-openapi/swag v0.22.3
+go: downloading github.com/go-openapi/jsonreference v0.20.2
+go: downloading github.com/mailru/easyjson v0.7.7
+go: downloading github.com/go-openapi/jsonpointer v0.19.6
+go: downloading github.com/josharian/intern v1.0.0
+# github.com/openconfig/ondatra/gnmi/otg/otgpath
+gnmi/otg/otgpath/otgpath.go:23:2: "reflect" imported and not used
+# github.com/openconfig/ondatra/gnmi/oc/gnmicollectormetadata
+gnmi/oc/gnmicollectormetadata/gnmicollectormetadata-0.go:86:2: "reflect" imported and not
+used
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+# github.com/openconfig/ondatra/gnmi/oc/sampling
+gnmi/oc/sampling/sampling-0.go:86:2: "reflect" imported and not used
+____________________________________________________________________________
+_________________
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go build ./...
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+go get -u github.com/openconfig/ondatra/gosnappi
+go: github.com/openconfig/ondatra/gosnappi: no matching versions for query "upgrade"
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go mod verify
+all modules verified
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go apt-get -u
+github.com/openconfig/ondatra/gosnappi
+go apt-get: unknown command
+Run 'go help' for usage.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go install -u
+github.com/openconfig/ondatra/gosnappi
+flag provided but not defined: -u
+usage: go install [build flags] [packages]
+Run 'go help install' for details.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go install
+github.com/openconfig/ondatra/gosnappi
+no required module provides package github.com/openconfig/ondatra/gosnappi; to add it:
+go get github.com/openconfig/ondatra/gosnappi
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go get
+github.com/openconfig/ondatra/gosnappi
+go: github.com/openconfig/ondatra/gosnappi: no matching versions for query "upgrade"
+go test $(go list ./... | grep -v /integration)
+go: downloading github.com/openconfig/testt v0.0.0-20220311054427-efbb1a32ec07
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+FAIL github.com/openconfig/ondatra [build failed]
+? github.com/openconfig/ondatra/binding/grpcutil/testservice [no test files]
+FAIL github.com/openconfig/ondatra/binding [build failed]
+? github.com/openconfig/ondatra/binding/grpcutil/testservice/gen [no test files]
+ok github.com/openconfig/ondatra/binding/grpcutil 0.013s
+ok github.com/openconfig/ondatra/binding/ixweb 0.203s
+ok github.com/openconfig/ondatra/binding/portgraph 0.121s
+FAIL github.com/openconfig/ondatra/cli [build failed]
+FAIL github.com/openconfig/ondatra/config [build failed]
+FAIL github.com/openconfig/ondatra/console [build failed]
+FAIL github.com/openconfig/ondatra/fakebind [build failed]
+? github.com/openconfig/ondatra/gnmi/oc [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/ateflow [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/gnmicollectormetadata [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/interfaces [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/keychain [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/lacp[no test files]
+? github.com/openconfig/ondatra/gnmi/oc/lldp [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/netinstbgp [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/netinstisis [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/acl [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/ocpath [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/platform [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/qos [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/routingpolicy [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/sampling [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/system [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/terminaldevice [no test files]
+? github.com/openconfig/ondatra/gnmi/otg [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/bgp [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/discovery [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/flow [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/isis[no test files]
+? github.com/openconfig/ondatra/gnmi/otg/lacp [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/lag [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/lldp [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/otgpath [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/port [no test files]
+? github.com/openconfig/ondatra/gnmi/otg/rsvp [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/networkinstance [no test files]
+? github.com/openconfig/ondatra/gnmi/oc/definedsets[no test files]
+? github.com/openconfig/ondatra/internal/display [no test files]
+ok github.com/openconfig/ondatra/gnmi 0.444s
+FAIL github.com/openconfig/ondatra/gnoi [build failed]
+FAIL github.com/openconfig/ondatra/internal/ate [build failed]
+FAIL github.com/openconfig/ondatra/internal/events [build failed]
+? github.com/openconfig/ondatra/internal/fakegnmi [no test files]
+ok github.com/openconfig/ondatra/internal/flags 0.034s
+? github.com/openconfig/ondatra/ixnet [no test files]
+ok github.com/openconfig/ondatra/internal/ixconfig 0.862s
+ok github.com/openconfig/ondatra/internal/ixgnmi 2.623s
+ok github.com/openconfig/ondatra/internal/junitxml 0.007s
+ok github.com/openconfig/ondatra/internal/orderedmap 0.004s
+FAIL github.com/openconfig/ondatra/internal/rawapis [build failed]
+FAIL github.com/openconfig/ondatra/internal/testbed [build failed]
+FAIL github.com/openconfig/ondatra/knebind [build failed]
+ok github.com/openconfig/ondatra/knebind/creds 0.015s
+FAIL github.com/openconfig/ondatra/knebind/solver [build failed]
+? github.com/openconfig/ondatra/proto[no test files]
+FAIL github.com/openconfig/ondatra/netutil [build failed]
+FAIL github.com/openconfig/ondatra/otg [build failed]
+? github.com/openconfig/ondatra/proxy/proto/httpovergrpc [no test files]
+? github.com/openconfig/ondatra/proxy/proto/reservation [no test files]
+ok github.com/openconfig/ondatra/proxy 1.588s
+ok github.com/openconfig/ondatra/proxy/grpcproxy 0.021s
+ok github.com/openconfig/ondatra/proxy/httpovergrpc 0.044s
+FAIL github.com/openconfig/ondatra/raw [build failed]
+ok github.com/openconfig/ondatra/report 0.018s
+FAIL
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go test -testbed=testbed.textproto
+-run=$RUN_THIS_TEST_CASE
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+FAIL github.com/openconfig/ondatra [build failed]
