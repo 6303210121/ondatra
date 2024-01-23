@@ -72,3 +72,11 @@ ok  	github.com/openconfig/ondatra/proxy/httpovergrpc	0.044s
 FAIL	github.com/openconfig/ondatra/raw [build failed]
 ok  	github.com/openconfig/ondatra/report	0.018s
 FAIL
+
+
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$  go test -testbed=testbed.textproto -run=$RUN_THIS_TEST_CASE
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+FAIL	github.com/openconfig/ondatra [build failed]
+
