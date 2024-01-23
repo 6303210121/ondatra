@@ -1,0 +1,74 @@
+ go test $(go list ./... | grep -v /integration)
+go: downloading github.com/openconfig/testt v0.0.0-20220311054427-efbb1a32ec07
+# github.com/openconfig/ondatra/binding
+binding/binding.go:182:57: undefined: gosnappi.GosnappiApi
+binding/abstract.go:168:76: undefined: gosnappi.GosnappiApi
+FAIL	github.com/openconfig/ondatra [build failed]
+?   	github.com/openconfig/ondatra/binding/grpcutil/testservice	[no test files]
+FAIL	github.com/openconfig/ondatra/binding [build failed]
+?   	github.com/openconfig/ondatra/binding/grpcutil/testservice/gen	[no test files]
+ok  	github.com/openconfig/ondatra/binding/grpcutil	0.013s
+ok  	github.com/openconfig/ondatra/binding/ixweb	0.203s
+ok  	github.com/openconfig/ondatra/binding/portgraph	0.121s
+FAIL	github.com/openconfig/ondatra/cli [build failed]
+FAIL	github.com/openconfig/ondatra/config [build failed]
+FAIL	github.com/openconfig/ondatra/console [build failed]
+FAIL	github.com/openconfig/ondatra/fakebind [build failed]
+?   	github.com/openconfig/ondatra/gnmi/oc	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/ateflow	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/gnmicollectormetadata	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/interfaces	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/keychain	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/lacp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/lldp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/netinstbgp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/netinstisis	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/acl	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/ocpath	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/platform	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/qos	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/routingpolicy	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/sampling	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/system	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/terminaldevice	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/bgp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/discovery	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/flow	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/isis	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lacp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lag	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lldp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/otgpath	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/port	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/rsvp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/networkinstance	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/definedsets	[no test files]
+?   	github.com/openconfig/ondatra/internal/display	[no test files]
+ok  	github.com/openconfig/ondatra/gnmi	0.444s
+FAIL	github.com/openconfig/ondatra/gnoi [build failed]
+FAIL	github.com/openconfig/ondatra/internal/ate [build failed]
+FAIL	github.com/openconfig/ondatra/internal/events [build failed]
+?   	github.com/openconfig/ondatra/internal/fakegnmi	[no test files]
+ok  	github.com/openconfig/ondatra/internal/flags	0.034s
+?   	github.com/openconfig/ondatra/ixnet	[no test files]
+ok  	github.com/openconfig/ondatra/internal/ixconfig	0.862s
+ok  	github.com/openconfig/ondatra/internal/ixgnmi	2.623s
+ok  	github.com/openconfig/ondatra/internal/junitxml	0.007s
+ok  	github.com/openconfig/ondatra/internal/orderedmap	0.004s
+FAIL	github.com/openconfig/ondatra/internal/rawapis [build failed]
+FAIL	github.com/openconfig/ondatra/internal/testbed [build failed]
+FAIL	github.com/openconfig/ondatra/knebind [build failed]
+ok  	github.com/openconfig/ondatra/knebind/creds	0.015s
+FAIL	github.com/openconfig/ondatra/knebind/solver [build failed]
+?   	github.com/openconfig/ondatra/proto	[no test files]
+FAIL	github.com/openconfig/ondatra/netutil [build failed]
+FAIL	github.com/openconfig/ondatra/otg [build failed]
+?   	github.com/openconfig/ondatra/proxy/proto/httpovergrpc	[no test files]
+?   	github.com/openconfig/ondatra/proxy/proto/reservation	[no test files]
+ok  	github.com/openconfig/ondatra/proxy	1.588s
+ok  	github.com/openconfig/ondatra/proxy/grpcproxy	0.021s
+ok  	github.com/openconfig/ondatra/proxy/httpovergrpc	0.044s
+FAIL	github.com/openconfig/ondatra/raw [build failed]
+ok  	github.com/openconfig/ondatra/report	0.018s
+FAIL
