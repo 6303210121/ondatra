@@ -1,0 +1,134 @@
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go test $(go list ./... | grep -v /integration)
+go: downloading github.com/openconfig/testt v0.0.0-20220311054427-efbb1a32ec07
+ok  	github.com/openconfig/ondatra	0.842s
+ok  	github.com/openconfig/ondatra/binding	0.012s
+ok  	github.com/openconfig/ondatra/binding/grpcutil	0.029s
+?   	github.com/openconfig/ondatra/binding/grpcutil/testservice	[no test files]
+?   	github.com/openconfig/ondatra/binding/grpcutil/testservice/gen	[no test files]
+?   	github.com/openconfig/ondatra/binding/introspect	[no test files]
+ok  	github.com/openconfig/ondatra/binding/ixweb	1.586s
+ok  	github.com/openconfig/ondatra/binding/portgraph	0.158s
+ok  	github.com/openconfig/ondatra/cli	0.014s
+ok  	github.com/openconfig/ondatra/config	0.031s
+?   	github.com/openconfig/ondatra/debug	[no test files]
+?   	github.com/openconfig/ondatra/eventlis	[no test files]
+ok  	github.com/openconfig/ondatra/console	0.016s
+ok  	github.com/openconfig/ondatra/fakebind	0.042s
+?   	github.com/openconfig/ondatra/gnmi/oc	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/acl	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/ateflow	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/definedsets	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/gnmicollectormetadata	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/interfaces	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/keychain	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/lacp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/lldp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/netinstbgp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/netinstisis	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/networkinstance	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/ocpath	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/platform	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/qos	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/routingpolicy	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/sampling	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/system	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/oc/terminaldevice	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/bgp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/discovery	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/flow	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/isis	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lacp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lag	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/lldp	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/otgpath	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/port	[no test files]
+?   	github.com/openconfig/ondatra/gnmi/otg/rsvp	[no test files]
+ok  	github.com/openconfig/ondatra/gnmi	0.434s
+ok  	github.com/openconfig/ondatra/gnoi	0.833s
+?   	github.com/openconfig/ondatra/internal/display	[no test files]
+?   	github.com/openconfig/ondatra/internal/fakegnmi	[no test files]
+ok  	github.com/openconfig/ondatra/internal/ate	2.336s
+ok  	github.com/openconfig/ondatra/internal/events	0.016s
+ok  	github.com/openconfig/ondatra/internal/flags	0.012s
+ok  	github.com/openconfig/ondatra/internal/ixconfig	0.809s
+?   	github.com/openconfig/ondatra/ixnet	[no test files]
+ok  	github.com/openconfig/ondatra/internal/ixgnmi	2.518s
+ok  	github.com/openconfig/ondatra/internal/junitxml	0.401s
+ok  	github.com/openconfig/ondatra/internal/orderedmap	0.005s
+ok  	github.com/openconfig/ondatra/internal/rawapis	0.036s
+ok  	github.com/openconfig/ondatra/internal/testbed	0.023s
+?   	github.com/openconfig/ondatra/knebind/init	[no test files]
+ok  	github.com/openconfig/ondatra/knebind	1.445s
+ok  	github.com/openconfig/ondatra/knebind/creds	0.652s
+ok  	github.com/openconfig/ondatra/knebind/solver	1.154s
+?   	github.com/openconfig/ondatra/proto	[no test files]
+ok  	github.com/openconfig/ondatra/netutil	1.232s
+?   	github.com/openconfig/ondatra/proxy/proto/httpovergrpc	[no test files]
+?   	github.com/openconfig/ondatra/proxy/proto/reservation	[no test files]
+ok  	github.com/openconfig/ondatra/otg	3.256s
+ok  	github.com/openconfig/ondatra/proxy	2.043s
+ok  	github.com/openconfig/ondatra/proxy/grpcproxy	0.027s
+ok  	github.com/openconfig/ondatra/proxy/httpovergrpc	0.023s
+ok  	github.com/openconfig/ondatra/raw	0.014s
+ok  	github.com/openconfig/ondatra/report	0.012s
+
+
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$ go test -testbed=testbed.textproto -run=$RUN_THIS_TEST_CASE
+
+*** Reserving the testbed...
+
+
+********************************************************************************
+
+  Testbed Reservation Complete
+  ID: 
+
+
+********************************************************************************
+
+
+*** Releasing the testbed...
+
+
+*** Reserving the testbed...
+
+
+*** Reserving the testbed...
+
+
+********************************************************************************
+
+  Testbed Reservation Complete
+  ID: 
+
+
+********************************************************************************
+
+
+*** Releasing the testbed...
+
+d...
+
+PASS
+ok  	github.com/openconfig/ondatra	0.855s
+
+*** Reserving the testbed...
+
+
+********************************************************************************
+
+  Testbed Reservation Complete
+  ID: 
+
+
+********************************************************************************
+
+
+*** Releasing the testbed...
+
+PASS
+ok  	github.com/openconfig/ondatra	0.823s
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~/ondatra$
+
+
