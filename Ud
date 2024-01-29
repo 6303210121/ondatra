@@ -1,0 +1,35 @@
+
+# Test Case: Interface Status Check for Router
+
+# Test Parameters
+router_ip="10.133.35.156"
+ssh_username="your_ssh_username"
+
+# 1. Ping Test
+ping_result=$(ping -c 4 $router_ip)
+echo "Ping Test Result: $ping_result"
+# Expected Outcome: Successful replies indicate an up interface. Timeouts or unreachable messages suggest a potentially down interface.
+
+# 2. Check Interface Status
+interface_status=$(show interface status | grep $router_ip)
+echo "Interface Status: $interface_status"
+# Expected Outcome: Look for the entry corresponding to the IP address $router_ip. 
+# If the status is "up," consider the interface up; if it's "down," consider the interface down.
+
+# 3. Traceroute
+traceroute_result=$(traceroute $router_ip)
+echo "Traceroute Result: $traceroute_result"
+# Expected Outcome: Review the output for each hop. 
+# If you see a series of asterisks (*) or timeouts, it could indicate a down interface.
+
+# 4. Telnet
+telnet $router_ip
+# Expected Outcome: If the connection is successful, consider the interface up. 
+# If the connection fails, it may indicate a down interface.
+
+# 5. SSH
+ssh $ssh_username@$router_ip
+# Expected Outcome: If the SSH connection is successful, consider the interface up. 
+# If the connection fails, it may indicate a down interface.
+
+# Note: Ensure that appropriate credentials are used for Telnet and SSH tests.
