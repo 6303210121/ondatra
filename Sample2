@@ -1,0 +1,65 @@
+package debug
+
+import (
+	"errors"
+	"fmt"
+	"testing"
+)
+
+type MockRouter struct {
+	IPAddress string
+}
+
+func (r *MockRouter) CheckInterfaceState(interfaceName string) (string, error) {
+	fmt.Printf("Checking state of interface %s on router with IP address: %s\n", interfaceName, r.IPAddress)
+
+	// Simulate different interface states based on the interface name
+	if interfaceName == "eth1/1" {
+		return "up", nil
+	} else if interfaceName == "eth1/2" {
+		return "down", nil
+	}
+
+	// Return an error for unknown interface names
+	return "", errors.New("unknown interface")
+}
+
+func TestInterfaceStateUp(t *testing.T) {
+	router := &MockRouter{IPAddress: "10.133.35.158"}
+
+	state, err := router.CheckInterfaceState("eth1/1")
+
+	if err != nil {
+		fmt.Printf("Error checking interface state: %v\n", err)
+		t.FailNow()
+	}
+
+	fmt.Printf("State of interface eth1/1: %s\n", state)
+
+	if state != "up" {
+		fmt.Println("Interface eth1/1 is down")
+		t.Fail()
+	} else {
+		fmt.Println("Interface eth1/1 is up")
+	}
+}
+
+func TestInterfaceStateDown(t *testing.T) {
+	router := &MockRouter{IPAddress: "10.133.35.158"}
+
+	state, err := router.CheckInterfaceState("eth1/2")
+
+	if err != nil {
+		fmt.Printf("Error checking interface state: %v\n", err)
+		t.FailNow()
+	}
+
+	fmt.Printf("State of interface eth1/2: %s\n", state)
+
+	if state != "down" {
+		fmt.Println("Interface eth1/2 is up")
+		t.Fail()
+	} else {
+		fmt.Println("Interface eth1/2 is down")
+	}
+}
