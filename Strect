@@ -1,0 +1,34 @@
+package main
+
+import (
+    "testing"
+
+    "github.com/stretchr/testify/assert"
+)
+
+// MockRouter represents a mocked router
+type MockRouter struct {
+    IPAddress string
+}
+
+// CheckInterfaceState simulates checking the state of an interface
+func (r *MockRouter) CheckInterfaceState(interfaceName string) (string, error) {
+    // Simulate checking the state of the interface
+    // For demonstration purposes, let's assume eth1/1 is always up
+    return "up", nil
+}
+
+// TestInterfaceState tests the state of an interface on the router
+func TestInterfaceState(t *testing.T) {
+    // Initialize the mocked router
+    router := &MockRouter{IPAddress: "10.133.35.158"}
+
+    // Check the state of the interface eth1/1
+    state, err := router.CheckInterfaceState("eth1/1")
+
+    // Check if there were any errors during the interface state check
+    assert.NoError(t, err, "Error checking interface state")
+
+    // Check if the interface is up
+    assert.Equal(t, "up", state, "Interface eth1/1 should be up")
+}
