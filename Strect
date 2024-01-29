@@ -1,6 +1,7 @@
 package main
 
 import (
+    "fmt"
     "testing"
 
     "github.com/stretchr/testify/assert"
@@ -15,6 +16,7 @@ type MockRouter struct {
 func (r *MockRouter) CheckInterfaceState(interfaceName string) (string, error) {
     // Simulate checking the state of the interface
     // For demonstration purposes, let's assume eth1/1 is always up
+    fmt.Printf("Checking state of interface %s on router with IP address: %s\n", interfaceName, r.IPAddress)
     return "up", nil
 }
 
@@ -27,8 +29,19 @@ func TestInterfaceState(t *testing.T) {
     state, err := router.CheckInterfaceState("eth1/1")
 
     // Check if there were any errors during the interface state check
-    assert.NoError(t, err, "Error checking interface state")
+    if err != nil {
+        fmt.Printf("Error checking interface state: %v\n", err)
+        t.FailNow()
+    }
+
+    // Print the state of the interface
+    fmt.Printf("State of interface eth1/1: %s\n", state)
 
     // Check if the interface is up
-    assert.Equal(t, "up", state, "Interface eth1/1 should be up")
+    if state != "up" {
+        fmt.Println("Interface eth1/1 is down")
+        t.Fail()
+    } else {
+        fmt.Println("Interface eth1/1 is up")
+    }
 }
