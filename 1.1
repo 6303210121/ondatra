@@ -1,0 +1,24 @@
+package main
+
+import (
+	"fmt"
+	"github.com/openconfig/ondatra/errors"
+	"github.com/openconfig/ondatra/interface"
+)
+
+func main() {
+	// Connect to the router
+	device, err := ondatra.NewDevice("10.133.35.143", "tcs123")
+	if err != nil {
+		fmt.Println("Error connecting to device:", err)
+		return
+	}
+	defer device.Disconnect()
+
+	// Enable the interface
+	if err := interface.Enable(device, "Ethernet1/1"); err != nil {
+		fmt.Println("Error enabling interface:", err)
+		return
+	}
+	fmt.Println("Interface Ethernet1/1 successfully enabled!")
+}
