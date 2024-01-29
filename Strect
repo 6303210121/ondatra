@@ -1,47 +1,28 @@
-package main
-
-import (
-    "fmt"
-    "testing"
-
-    "github.com/stretchr/testify/assert"
-)
-
-// MockRouter represents a mocked router
-type MockRouter struct {
-    IPAddress string
-}
-
-// CheckInterfaceState simulates checking the state of an interface
-func (r *MockRouter) CheckInterfaceState(interfaceName string) (string, error) {
-    // Simulate checking the state of the interface
-    // For demonstration purposes, let's assume eth1/1 is always up
-    fmt.Printf("Checking state of interface %s on router with IP address: %s\n", interfaceName, r.IPAddress)
-    return "up", nil
-}
-
-// TestInterfaceState tests the state of an interface on the router
 func TestInterfaceState(t *testing.T) {
-    // Initialize the mocked router
-    router := &MockRouter{IPAddress: "10.133.35.158"}
+  // Define target router IP address
+  targetIP := "10.133.35.156"
 
-    // Check the state of the interface eth1/1
-    state, err := router.CheckInterfaceState("eth1/1")
+  // Ping the target router with a specific count and timeout
+  output, err := exec.Command("ping", "-c", "3", "-W", "1", targetIP).Output()
+  if err != nil {
+    t.Errorf("Error pinging router: %v", err)
+    return
+  }
 
-    // Check if there were any errors during the interface state check
-    if err != nil {
-        fmt.Printf("Error checking interface state: %v\n", err)
-        t.FailNow()
+  // Analyze the ping output to determine the status
+  lines := strings.Split(string(output), "\n")
+  for _, line := range lines {
+    if strings.Contains(line, "time=") {
+      // Router is reachable, interface likely up
+      fmt.Println("Interface on router", targetIP, "is likely up")
+      return
+    } else if strings.Contains(line, "Request timeout") {
+      // Router unreachable, interface likely down
+      t.Errorf("Interface on router", targetIP, "is likely down")
+      return
     }
+  }
 
-    // Print the state of the interface
-    fmt.Printf("State of interface eth1/1: %s\n", state)
-
-    // Check if the interface is up
-    if state != "up" {
-        fmt.Println("Interface eth1/1 is down")
-        t.Fail()
-    } else {
-        fmt.Println("Interface eth1/1 is up")
-    }
+  // Unreachable due to other reasons
+  t.Errorf("Unexpected ping output: %s", string(output))
 }
