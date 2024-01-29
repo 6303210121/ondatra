@@ -1,43 +1,43 @@
 package main
 
 import (
-   "fmt"
-   "testing"
-   "os/exec"
-   "strings"
+  "fmt"
+  "testing"
+  "os/exec"
+  "strings"
 )
 
 func TestInterfaceState(t *testing.T) {
-   // Define target router IP address
-   targetIP := "10.133.35.156"
+  // Define target router IP address
+  targetIP := "10.133.35.143"
 
-   // Ping the target router with a specific count and timeout
-   output, err := exec.Command("ping", "-c", "3", "-W", "1", targetIP).Output()
-   if err != nil {
-      t.Errorf("Error pinging router: %v", err)
+  // Ping the target router with a specific count and timeout
+  output, err := exec.Command("ping", "-c", "3", "-W", "1", targetIP).Output()
+  if err != nil {
+    t.Errorf("Error pinging router: %v", err)
+    return
+  }
+
+  // Analyze the ping output to determine the status
+  lines := strings.Split(string(output), "\n")
+  for _, line := range lines {
+    if strings.Contains(line, "time=") {
+      // Router is reachable, interface likely up
+      fmt.Println("Interface on router", targetIP, "is likely up")
       return
-   }
+    } else if strings.Contains(line, "Request timeout") {
+      // Router unreachable, interface likely down
+      t.Errorf("Interface on router", targetIP, "is likely down")
+      return
+    }
+  }
 
-   // Analyze the ping output to determine the status
-   lines := strings.Split(string(output), "\n")
-   for _, line := range lines {
-      if strings.Contains(line, "time=") {
-         // Router is reachable, interface likely up
-         fmt.Println("Interface on router", targetIP, "is likely up")
-         return
-      } else if strings.Contains(line, "Request timeout") {
-         // Router unreachable, interface likely down
-         t.Errorf("Interface on router", targetIP, "is likely down")
-         return
-      }
-   }
-
-   // Unreachable due to other reasons
-   t.Errorf("Unexpected ping output: %s", string(output))
+  // Unreachable due to other reasons
+  t.Errorf("Unexpected ping output: %s", string(output))
 }
 
 func main() {
-   testing.RunTests(func(t *testing.T) {
-      t.Run("TestInterfaceState", TestInterfaceState)
-   })
+  testing.RunTests(func(t *testing.T) {
+    t.Run("TestInterfaceState", TestInterfaceState)
+  })
 }
