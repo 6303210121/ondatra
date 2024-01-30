@@ -1,0 +1,49 @@
+ // main.go
+package main
+
+import (
+	"fmt"
+	"golang.org/x/crypto/ssh"
+	"log"
+)
+
+func main() {
+	// Your main code here...
+}
+
+func checkInterfaceStatus(client *ssh.Client) {
+	session, err := client.NewSession()
+	if err != nil {
+		log.Fatalf("Failed to create session: %v", err)
+	}
+	defer session.Close()
+
+	// Execute commands to check interface status
+	output, err := session.CombinedOutput("show interface status")
+	if err != nil {
+		log.Fatalf("Failed to execute command: %v", err)
+	}
+
+	fmt.Println("Interface Status:")
+	fmt.Printf("%s\n", output)
+}
+
+.............
+// main_test.go
+package main
+
+import (
+	"fmt"
+	"golang.org/x/crypto/ssh"
+	"testing"
+)
+
+func TestCheckInterfaceStatus(t *testing.T) {
+	// Mock an SSH client (replace with actual client in a real-world scenario)
+	client := &ssh.Client{}
+
+	fmt.Println("Running TestCheckInterfaceStatus")
+	checkInterfaceStatus(client)
+
+	// Add assertions or checks here to validate the behavior of the function
+}
