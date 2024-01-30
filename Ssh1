@@ -1,41 +1,130 @@
- // main_test.go
+// main.go
+package main
+
+import (
+	"fmt"
+	"golang.org/x/crypto/ssh"
+	"log"
+)
+
+// SSHClientInterface defines an interface for the SSH client.
+type SSHClientInterface interface {
+	Dial(network, addr string, config *ssh.ClientConfig) (*ssh.Client, error)
+	NewSession() (*ssh.Session, error)
+}
+
+// SSHClient implements the SSHClientInterface.
+type SSHClient struct{}
+
+// Dial is a method of SSHClient to create an SSH connection.
+func (c *SSHClient) Dial(network, addr string, config *ssh.ClientConfig) (*ssh.Client, error) {
+	return ssh.Dial(network, addr, config)
+}
+
+// NewSession is a method of SSHClient to create an SSH session.
+func (c *SSHClient) NewSession(client *ssh.Client) (*ssh.Session, error) {
+	return client.NewSession()
+}
+
+func main() {
+	// Test Parameters
+	routerIP := "10.133.35.158"
+	sshUsername := "your_ssh_username"
+	sshPassword := "your_ssh_password" // Alternatively, you can use key authentication
+
+	// SSH configuration
+	config := &ssh.ClientConfig{
+		User: sshUsername,
+		Auth: []ssh.AuthMethod{
+			ssh.Password(sshPassword),
+			// Add additional authentication methods as needed (e.g., ssh.PublicKeys(privateKey)),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(), // Insecure for demonstration purposes, use a proper callback in production
+	}
+
+	// Create an instance of SSHClient
+	sshClient := &SSHClient{}
+
+	// SSH connection
+	client, err := sshClient.Dial("tcp", fmt.Sprintf("%s:22", routerIP), config)
+	if err != nil {
+		log.Fatalf("Failed to dial: %v", err)
+	}
+	defer client.Close()
+
+	session, err := sshClient.NewSession(client)
+	if err != nil {
+		log.Fatalf("Failed to create session: %v", err)
+	}
+	defer session.Close()
+
+	// Execute commands after logging in
+	output, err := session.CombinedOutput("show interface status")
+	if err != nil {
+		log.Fatalf("Failed to execute command: %v", err)
+	}
+
+	fmt.Println("Logged into the router.")
+	fmt.Printf("Interface Status:\n%s\n", output)
+}
+
+.........
+// main_test.go
 package main
 
 import (
 	"testing"
-	"golang.org/x/crypto/ssh"
 )
 
-func TestSSHConnection(t *testing.T) {
-	// Replace this with an actual client or a mocked client for testing
-	client := &ssh.Client{}
+type mockSSHClient struct{}
 
-	// Run the function being tested
-	testSSHConnection(client)
-
-	// Add assertions or checks here to validate the behavior of the function
-	if trueCondition {
-		t.Error("Expected error message if the condition is not met")
-	}
-
-	if anotherCondition {
-		t.Fail("Expected failure if another condition is not met")
-	}
+func (m *mockSSHClient) Dial(network, addr string, config *ssh.ClientConfig) (*ssh.Client, error) {
+	return &ssh.Client{}, nil
 }
 
-func TestCheckInterfaceStatus(t *testing.T) {
-	// Replace this with an actual client or a mocked client for testing
-	client := &ssh.Client{}
+func (m *mockSSHClient) NewSession(client *ssh.Client) (*ssh.Session, error) {
+	return &ssh.Session{}, nil
+}
 
-	// Run the function being tested
-	checkInterfaceStatus(client)
+func TestSSHConnection(t *testing.T) {
+	// Create an instance of the mockSSHClient
+	mockClient := &mockSSHClient{}
 
-	// Add assertions or checks here to validate the behavior of the function
-	if trueCondition {
-		t.Error("Expected error message if the condition is not met")
+	// Test SSH connection functionality
+	err := testSSHConnection(mockClient)
+	if err != nil {
+		t.Errorf("Expected no error, got: %v", err)
+	}
+}
+......
+
+// main.go
+// ...
+
+// testSSHConnection tests the SSH connection functionality.
+func testSSHConnection(sshClient SSHClientInterface) error {
+	// Test Parameters
+	routerIP := "10.133.35.158"
+	sshUsername := "your_ssh_username"
+	sshPassword := "your_ssh_password" // Alternatively, you can use key authentication
+
+	// SSH configuration
+	config := &ssh.ClientConfig{
+		User: sshUsername,
+		Auth: []ssh.AuthMethod{
+			ssh.Password(sshPassword),
+			// Add additional authentication methods as needed (e.g., ssh.PublicKeys(privateKey)),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(), // Insecure for demonstration purposes, use a proper callback in production
 	}
 
-	if anotherCondition {
-		t.Fail("Expected failure if another condition is not met")
+	// SSH connection
+	client, err := sshClient.Dial("tcp", fmt.Sprintf("%s:22", routerIP), config)
+	if err != nil {
+		return fmt.Errorf("Failed to dial: %v", err)
 	}
+	defer client.Close()
+
+	// Rest of the function...
+	return nil
 }
