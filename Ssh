@@ -1,4 +1,5 @@
- // main.go
+
+// main.go
 package main
 
 import (
@@ -7,43 +8,64 @@ import (
 	"log"
 )
 
-func main() {
-	// Your main code here...
+// SSHClientInterface defines an interface for the SSH client.
+type SSHClientInterface interface {
+	Dial(network, addr string, config *ssh.ClientConfig) (*ssh.Client, error)
+	NewSession(client *ssh.Client) (*ssh.Session, error)
 }
 
-func checkInterfaceStatus(client *ssh.Client) {
-	session, err := client.NewSession()
+// SSHClient implements the SSHClientInterface.
+type SSHClient struct{}
+
+func (c *SSHClient) Dial(network, addr string, config *ssh.ClientConfig) (*ssh.Client, error) {
+	return ssh.Dial(network, addr, config)
+}
+
+func (c *SSHClient) NewSession(client *ssh.Client) (*ssh.Session, error) {
+	return client.NewSession()
+}
+
+func testSSHConnection(sshClient SSHClientInterface) error {
+	routerIP := "10.133.35.158"
+	sshUsername := "your_ssh_username"
+	sshPassword := "your_ssh_password"
+
+	config := &ssh.ClientConfig{
+		User: sshUsername,
+		Auth: []ssh.AuthMethod{
+			ssh.Password(sshPassword),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+	}
+
+	client, err := sshClient.Dial("tcp", fmt.Sprintf("%s:22", routerIP), config)
 	if err != nil {
-		log.Fatalf("Failed to create session: %v", err)
+		return fmt.Errorf("Failed to dial: %v", err)
+	}
+	defer client.Close()
+
+	session, err := sshClient.NewSession(client)
+	if err != nil {
+		return fmt.Errorf("Failed to create session: %v", err)
 	}
 	defer session.Close()
 
-	// Execute commands to check interface status
 	output, err := session.CombinedOutput("show interface status")
 	if err != nil {
-		log.Fatalf("Failed to execute command: %v", err)
+		return fmt.Errorf("Failed to execute command: %v", err)
 	}
 
-	fmt.Println("Interface Status:")
-	fmt.Printf("%s\n", output)
+	fmt.Println("Logged into the router.")
+	fmt.Printf("Interface Status:\n%s\n", output)
+
+	return nil
 }
 
-.............
-// main_test.go
-package main
-
-import (
-	"fmt"
-	"golang.org/x/crypto/ssh"
-	"testing"
-)
-
-func TestCheckInterfaceStatus(t *testing.T) {
-	// Mock an SSH client (replace with actual client in a real-world scenario)
-	client := &ssh.Client{}
-
-	fmt.Println("Running TestCheckInterfaceStatus")
-	checkInterfaceStatus(client)
-
-	// Add assertions or checks here to validate the behavior of the function
+// main function
+func main() {
+	// Assuming you want to test SSH connection in the main function
+	sshClient := &SSHClient{}
+	if err := testSSHConnection(sshClient); err != nil {
+		log.Fatal(err)
+	}
 }
