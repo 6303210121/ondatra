@@ -1,0 +1,5 @@
+ github.com/openconfig/ondatra/debug/s3/m [github.com/openconfig/ondatra/debug/s3/m.test]
+./main_test.go:22:27: cannot use mockClient (variable of type *mockSSHClient) as SSHClientInterface value in argument to testSSHConnection: *mockSSHClient does not implement SSHClientInterface (wrong type for method NewSession)
+		have NewSession(*ssh.Client) (*ssh.Session, error)
+		want NewSession() (*ssh.Session, error)
+FAIL	github.com/openconfig/ondatra/debug/s3/m [build failed]
