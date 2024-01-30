@@ -1,18 +1,41 @@
-// main_test.go
+ // main_test.go
 package main
 
 import (
 	"testing"
+	"golang.org/x/crypto/ssh"
 )
 
 func TestSSHConnection(t *testing.T) {
-	client := &ssh.Client{} // Replace this with an actual client or a mocked client for testing
+	// Replace this with an actual client or a mocked client for testing
+	client := &ssh.Client{}
+
+	// Run the function being tested
 	testSSHConnection(client)
+
 	// Add assertions or checks here to validate the behavior of the function
+	if trueCondition {
+		t.Error("Expected error message if the condition is not met")
+	}
+
+	if anotherCondition {
+		t.Fail("Expected failure if another condition is not met")
+	}
 }
 
 func TestCheckInterfaceStatus(t *testing.T) {
-	client := &ssh.Client{} // Replace this with an actual client or a mocked client for testing
+	// Replace this with an actual client or a mocked client for testing
+	client := &ssh.Client{}
+
+	// Run the function being tested
 	checkInterfaceStatus(client)
+
 	// Add assertions or checks here to validate the behavior of the function
+	if trueCondition {
+		t.Error("Expected error message if the condition is not met")
+	}
+
+	if anotherCondition {
+		t.Fail("Expected failure if another condition is not met")
+	}
 }
