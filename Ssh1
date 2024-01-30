@@ -1,0 +1,18 @@
+// main_test.go
+package main
+
+import (
+	"testing"
+)
+
+func TestSSHConnection(t *testing.T) {
+	client := &ssh.Client{} // Replace this with an actual client or a mocked client for testing
+	testSSHConnection(client)
+	// Add assertions or checks here to validate the behavior of the function
+}
+
+func TestCheckInterfaceStatus(t *testing.T) {
+	client := &ssh.Client{} // Replace this with an actual client or a mocked client for testing
+	checkInterfaceStatus(client)
+	// Add assertions or checks here to validate the behavior of the function
+}
