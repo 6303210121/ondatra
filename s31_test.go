@@ -44,6 +44,61 @@ func sendCommand(conn net.Conn, command string) {
 	time.Sleep(2 * time.Second)
 }
 
+=====================================
+
+func TestSample(t *testing.T) {
+	// Setup mock TCP connection
+	listener, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatalf("failed to start mock TCP server: %v", err)
+	}
+	defer listener.Close()
+
+	go func() {
+		// Accept the incoming connection
+		conn, err := listener.Accept()
+		if err != nil {
+			t.Fatalf("failed to accept connection: %v", err)
+		}
+		defer conn.Close()
+
+		// Simulate router responses
+		fmt.Fprintln(conn, "Welcome to the router")
+		fmt.Fprintln(conn, "Username:")
+		fmt.Fprintln(conn, "Password:")
+		fmt.Fprintln(conn, "show interfaces")
+		fmt.Fprintln(conn, "Interface status: up")
+	}()
+
+	// Connect to the mock TCP server
+	conn, err := net.Dial("tcp", listener.Addr().String())
+	if err != nil {
+		t.Fatalf("failed to connect to mock TCP server: %v", err)
+	}
+	defer conn.Close()
+
+	// Execute the main function
+	routerIP := listener.Addr().String()
+	routerUsername := "tcs"
+	routerPassword := "tcs123"
+	response := executeMainFunction(conn, routerIP, routerUsername, routerPassword)
+
+	// Validate the response
+	expectedResponse := "Interface status: up"
+	if response != expectedResponse {
+		t.Errorf("unexpected router response: got %s, want %s", response, expectedResponse)
+	}
+}
+
+func executeMainFunction(conn net.Conn, routerIP, routerUsername, routerPassword string) string {
+	readWelcomeMessages(conn)
+	sendCommand(conn, routerUsername)
+	sendCommand(conn, routerPassword)
+	time.Sleep(2 * time.Second)
+	sendCommand(conn, "show interfaces")
+	return readResponse(conn)
+}
+
 func readResponse(conn net.Conn) string {
 	reader := bufio.NewReader(conn)
 	response, _ := reader.ReadString('\n')
