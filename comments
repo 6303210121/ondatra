@@ -6,3 +6,11 @@
 FAIL
 FAIL	command-line-arguments	0.095s
 FAIL
+========================================================================================================
+
+# command-line-arguments [command-line-arguments.test]
+./sd_test.go:45:26: assignment mismatch: 3 variables but session.CombinedOutput returns 2 values
+./sd_test.go:76:33: cannot use addr (variable of type *net.TCPAddr) as string value in argument to ssh.Dial
+FAIL	command-line-arguments [build failed]
+FAIL
+=============================================================================================================
