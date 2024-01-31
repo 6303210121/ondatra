@@ -1,39 +1,81 @@
 
-package your_package
+package main
 
 import (
-  "fmt"
-  "testing"
-  "os/exec"
-  "strings"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net"
+	"os"
+
+	"golang.org/x/crypto/ssh"
 )
 
-func TestRouterLoginAndInterfaceState(t *testing.T) {
-  // Replace these with your actual credentials and IP
-  username := "your_username"
-  password := "your_password"
-  routerIP := "10.133.35.158"
+func main() {
+	// Replace with your router details
+	host := "192.168.1.1"
+	port := 22
+	username := "admin"
+	password := "your_password"
 
-  // Securely establish SSH connection to the router
-  // (using mock command for demonstration)
-  sshCommand := fmt.Sprintf("ssh -l %s %s 'nmcli device status | grep eth1/1'", username, routerIP)
-  output, err := exec.Command("sh", "-c", sshCommand).Output()
-  if err != nil {
-    t.Errorf("Error accessing router: %v", err)
-    return
-  }
+	// Connect to the router via SSH
+	client, err := connectSSH(host, port, username, password)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Close()
 
-  // Parse the output for the interface state and login confirmation
-  lines := strings.Split(string(output), "\n")
-  for _, line := range lines {
-    if strings.Contains(line, "connected") {
-      fmt.Println("Successfully logged in and interface eth1/1 is up")
-      return
-    } else if strings.Contains(line, "disconnected") {
-      t.Errorf("Interface eth1/1 on router", routerIP, "is down")
-      return
-    }
-  }
+	// Define router commands to execute
+	commands := []string{
+		"show ip interface brief",
+		"show ip route",
+		"show version",
+	}
 
-  t.Errorf("Unexpected output from nmcli: %s", string(output))
+	// Execute each command and save the output
+	var output string
+	for _, command := range commands {
+		session, err := client.NewSession()
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer session.Close()
+
+		// Run the command
+		stdout, stderr, err := session.CombinedOutput(command)
+		if err != nil {
+			log.Println("Error:", err, "for command:", command)
+			continue
+		}
+
+		// Combine standard output and standard error with a newline separator
+		output += fmt.Sprintf("%s\n%s\n", string(stdout), string(stderr))
+	}
+
+	// Write the output to a file for further analysis
+	err = ioutil.WriteFile("router_info.txt", []byte(output), 0644)
+	if err != nil {
+		log.Println("Error writing output:", err)
+	} else {
+		fmt.Println("Router information saved to router_info.txt")
+	}
+}
+
+func connectSSH(host string, port int, username, password string) (*ssh.Client, error) {
+	config := &ssh.ClientConfig{
+		User: username,
+		Auth: []ssh.AuthMethod{
+			ssh.Password(password),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(), // Warning: Insecure for production use!
+	}
+	addr, err := net.ResolveTCPAddr("tcp", fmt.Sprintf("%s:%d", host, port))
+	if err != nil {
+		return nil, err
+	}
+	client, err := ssh.Dial("tcp", addr, config)
+	if err != nil {
+		return nil, err
+	}
+	return client, nil
 }
