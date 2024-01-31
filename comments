@@ -1,16 +1,1 @@
-=== RUN   TestRouterInfo
-    sc_test.go:24: Error running command 'show ip interface brief' on router: exit status 255
-    sc_test.go:24: Error running command 'show ip route' on router: exit status 255
-    sc_test.go:24: Error running command 'show version' on router: exit status 255
---- FAIL: TestRouterInfo (0.09s)
-FAIL
-FAIL	command-line-arguments	0.095s
-FAIL
-========================================================================================================
 
-# command-line-arguments [command-line-arguments.test]
-./sd_test.go:45:26: assignment mismatch: 3 variables but session.CombinedOutput returns 2 values
-./sd_test.go:76:33: cannot use addr (variable of type *net.TCPAddr) as string value in argument to ssh.Dial
-FAIL	command-line-arguments [build failed]
-FAIL
-=============================================================================================================
