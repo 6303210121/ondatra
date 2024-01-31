@@ -1,31 +1,46 @@
+
 package main
 
 import (
-	"os/exec"
-	"strings"
-	"testing"
+    "bytes"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "net/url"
 )
 
-func TestIPConfig(t *testing.T) {
-	// Run the 'ipconfig' command
-	cmd := exec.Command("ipconfig")
+func main() {
+    // Define the router's IP address and login credentials
+    routerIP := "10.133.35.158"
+    username := "admin"
+    password := "psp123"
 
-	// Execute the command and capture output
-	output, err := cmd.CombinedOutput()
+    // Create a map of form data for the login request
+    formData := url.Values{}
+    formData.Set("username", username)
+    formData.Set("password", password)
 
-	// Check for errors during command execution
-	if err != nil {
-		t.Fatalf("Command execution failed: %v", err)
-	}
+    // Send a POST request to the router's login endpoint
+    resp, err := http.PostForm("http://"+routerIP+"/login", formData)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+    defer resp.Body.Close()
 
-	// Check if the output contains the expected information
-	expectedInfo := "IPv4 Address" // Adjust based on the expected output of 'ipconfig'
-	if !contains(output, expectedInfo) {
-		t.Errorf("Expected info not found in output. Expected: %s", expectedInfo)
-	}
-}
+    // Read the response body
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        fmt.Println("Error reading response body:", err)
+        return
+    }
 
-// Helper function to check if a string is present in another string
-func contains(source []byte, target string) bool {
-	return strings.Contains(string(source), target)
+    // Check the response status code
+    if resp.StatusCode == http.StatusOK {
+        fmt.Println("Login successful!")
+        // You can perform further actions after successful login here
+    } else {
+        fmt.Printf("Login failed with status code: %d\n", resp.StatusCode)
+        fmt.Println("Response body:", string(body))
+    }
 }
