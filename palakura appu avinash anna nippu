@@ -1,1 +1,37 @@
 
+package your_package
+
+import (
+  "fmt"
+  "testing"
+  "os/exec"
+  "strings"
+)
+
+func TestRouterInfo(t *testing.T) {
+  // Replace with your router IP and desired commands
+  routerIP := "10.133.35.158"
+  commands := []string{
+    "show ip interface brief",
+    "show ip route",
+    "show version",
+  }
+
+  for _, command := range commands {
+    // Execute the command on the router
+    output, err := exec.Command("ssh", "-l", "your_username", routerIP, command).Output()
+    if err != nil {
+      t.Errorf("Error running command '%s' on router: %v", command, err)
+      continue
+    }
+
+    // Process and print the output
+    trimmedOutput := strings.TrimSpace(string(output))
+    fmt.Println("----------- Output for", command, "-----------")
+    fmt.Println(trimmedOutput)
+    fmt.Println("-----------------------------------------")
+
+    // Perform specific checks on the output (optional)
+    // ...
+  }
+}
