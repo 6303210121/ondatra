@@ -1,1 +1,39 @@
 
+package your_package
+
+import (
+  "fmt"
+  "testing"
+  "os/exec"
+  "strings"
+)
+
+func TestRouterLoginAndInterfaceState(t *testing.T) {
+  // Replace these with your actual credentials and IP
+  username := "your_username"
+  password := "your_password"
+  routerIP := "10.133.35.158"
+
+  // Securely establish SSH connection to the router
+  // (using mock command for demonstration)
+  sshCommand := fmt.Sprintf("ssh -l %s %s 'nmcli device status | grep eth1/1'", username, routerIP)
+  output, err := exec.Command("sh", "-c", sshCommand).Output()
+  if err != nil {
+    t.Errorf("Error accessing router: %v", err)
+    return
+  }
+
+  // Parse the output for the interface state and login confirmation
+  lines := strings.Split(string(output), "\n")
+  for _, line := range lines {
+    if strings.Contains(line, "connected") {
+      fmt.Println("Successfully logged in and interface eth1/1 is up")
+      return
+    } else if strings.Contains(line, "disconnected") {
+      t.Errorf("Interface eth1/1 on router", routerIP, "is down")
+      return
+    }
+  }
+
+  t.Errorf("Unexpected output from nmcli: %s", string(output))
+}
