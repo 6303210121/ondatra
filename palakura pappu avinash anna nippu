@@ -35,3 +35,36 @@ func TestRouterInfo(t *testing.T) {
     // ...
   }
 }
+
+
+
+................
+
+package main
+
+import (
+	"os/exec"
+	"testing"
+)
+
+func TestRouterInfo(t *testing.T) {
+	// Replace "your_router_command" with the actual command to get router information
+	cmd := exec.Command("your_router_command")
+
+	// Run the command and capture the output
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		t.Fatalf("Error executing router command: %v", err)
+	}
+
+	// Check if the output contains expected information
+	expectedInfo := "expected_router_info"
+	if !contains(output, expectedInfo) {
+		t.Errorf("Router information not as expected. Expected: %s, Actual: %s", expectedInfo, string(output))
+	}
+}
+
+// Helper function to check if a string contains a substring
+func contains(s []byte, substr string) bool {
+	return strings.Contains(string(s), substr)
+}
