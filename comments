@@ -1,31 +1,8 @@
- github.com/openconfig/ondatra/debug/s3/m [github.com/openconfig/ondatra/debug/s3/m.test]
-./main_test.go:22:27: cannot use mockClient (variable of type *mockSSHClient) as SSHClientInterface value in argument to testSSHConnection: *mockSSHClient does not implement SSHClientInterface (wrong type for method NewSession)
-		have NewSession(*ssh.Client) (*ssh.Session, error)
-		want NewSession() (*ssh.Session, error)
-FAIL	github.com/openconfig/ondatra/debug/s3/m [build failed]
-
-..........................................................................................................
-
-=== RUN   TestSSHConnection
---- FAIL: TestSSHConnection (0.00s)
-panic: runtime error: invalid memory address or nil pointer dereference [recovered]
-	panic: runtime error: invalid memory address or nil pointer dereference
-[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x537621]
-
-goroutine 19 [running]:
-testing.tRunner.func1.2({0x552ae0, 0x6ab5b0})
-	/snap/go/10489/src/testing/testing.go:1545 +0x238
-testing.tRunner.func1()
-	/snap/go/10489/src/testing/testing.go:1548 +0x397
-panic({0x552ae0?, 0x6ab5b0?})
-	/snap/go/10489/src/runtime/panic.go:914 +0x21f
-github.com/openconfig/ondatra/debug/s3/m.testSSHConnection({0x5c9330, 0x6e36c0})
-	/home/tcs/ondatra1/ondatra/debug/s3/m/main.go:92 +0x1e1
-github.com/openconfig/ondatra/debug/s3/m.TestSSHConnection(0xc000082ea0)
-	/home/tcs/ondatra1/ondatra/debug/s3/m/main_test.go:22 +0x26
-testing.tRunner(0xc000082ea0, 0x59f550)
-	/snap/go/10489/src/testing/testing.go:1595 +0xff
-created by testing.(*T).Run in goroutine 1
-	/snap/go/10489/src/testing/testing.go:1648 +0x3ad
-exit status 2
-FAIL	github.com/openconfig/ondatra/debug/s3/m	0.006s
+=== RUN   TestRouterInfo
+    sc_test.go:24: Error running command 'show ip interface brief' on router: exit status 255
+    sc_test.go:24: Error running command 'show ip route' on router: exit status 255
+    sc_test.go:24: Error running command 'show version' on router: exit status 255
+--- FAIL: TestRouterInfo (0.09s)
+FAIL
+FAIL	command-line-arguments	0.095s
+FAIL
