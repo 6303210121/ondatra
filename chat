@@ -1,1 +1,31 @@
+package main
 
+import (
+	"os/exec"
+	"strings"
+	"testing"
+)
+
+func TestIPConfig(t *testing.T) {
+	// Run the 'ipconfig' command
+	cmd := exec.Command("ipconfig")
+
+	// Execute the command and capture output
+	output, err := cmd.CombinedOutput()
+
+	// Check for errors during command execution
+	if err != nil {
+		t.Fatalf("Command execution failed: %v", err)
+	}
+
+	// Check if the output contains the expected information
+	expectedInfo := "IPv4 Address" // Adjust based on the expected output of 'ipconfig'
+	if !contains(output, expectedInfo) {
+		t.Errorf("Expected info not found in output. Expected: %s", expectedInfo)
+	}
+}
+
+// Helper function to check if a string is present in another string
+func contains(source []byte, target string) bool {
+	return strings.Contains(string(source), target)
+}
