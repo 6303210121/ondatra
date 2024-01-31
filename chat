@@ -178,6 +178,28 @@ func TestLoginSuccess(t *testing.T) {
     routerIP = srv.URL
 
     err := Login()
+package main
+
+import (
+    "net/http"
+    "net/http/httptest"
+    "testing"
+)
+
+func TestLoginSuccess(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusOK)
+            w.Write([]byte("Login successful"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()
 
     if err != nil {
         t.Errorf("Login failed with error: %v", err)
@@ -203,3 +225,115 @@ func TestLoginFailure(t *testing.T) {
         t.Error("Expected login to fail, but it succeeded")
     }
 }
+    if err != nil {
+        t.Erropackage main
+
+import (
+    "net/http"
+    "net/http/httptest"
+    "testing"
+)
+
+func TestLoginSuccess(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusOK)
+            w.Write([]byte("Login successful"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()
+
+    if err != nil {
+        t.Errorf("Login failed with error: %v", err)
+    }
+}
+
+func TestLoginFailure(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusUnauthorized)
+            w.Write([]byte("Unauthorized"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()
+
+    if err == nil {
+        t.Error("Expected login to fail, but it succeeded")
+    }
+}rf("Login failed with error: %v", err)
+    }
+}
+
+func TestLoginFailure(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusUnauthorized)
+            w.Write([]byte("Unauthorized"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()
+
+    if err == npackage main
+
+import (
+    "net/http"
+    "net/http/httptest"
+    "testing"
+)
+
+func TestLoginSuccess(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusOK)
+            w.Write([]byte("Login successful"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()
+
+    if err != nil {
+        t.Errorf("Login failed with error: %v", err)
+    }
+}
+
+func TestLoginFailure(t *testing.T) {
+    srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if r.URL.Path == "/login" && r.Method == "POST" {
+            w.WriteHeader(http.StatusUnauthorized)
+            w.Write([]byte("Unauthorized"))
+            return
+        }
+        http.NotFound(w, r)
+    }))
+    defer srv.Close()
+
+    routerIP = srv.URL
+
+    err := Login()package main
+
+==================================================================================================
+
+
