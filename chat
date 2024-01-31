@@ -79,3 +79,76 @@ func TestRouterLogin(t *testing.T) {
     // For simplicity, let's just assume the program prints "Login successful!" for a successful login
 }
 
+_____---------------------------
+
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "io/ioutil"
+    "net/http"
+    "net/url"
+)
+
+var routerIP = "10.133.35.158"
+
+func main() {
+    // Define the login credentials
+    username := "admin"
+    password := "psp123"
+
+    // Create a map of form data for the login request
+    formData := url.Values{}
+    formData.Set("username", username)
+    formData.Set("password", password)
+
+    // Send a POST request to the router's login endpoint
+    resp, err := http.PostForm("http://"+routerIP+"/login", formData)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+    defer resp.Body.Close()
+
+    // Read the response body
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        fmt.Println("Error reading response body:", err)
+        return
+    }
+
+    // Check the response status code
+    if resp.StatusCode == http.StatusOK {
+        fmt.Println("Login successful!")
+        // You can perform further actions after successful login here
+    } else {
+        fmt.Printf("Login failed with status code: %d\n", resp.StatusCode)
+        fmt.Println("Response body:", string(body))
+    }
+}
+
+func Login() error {
+    // Define the login credentials
+    username := "admin"
+    password := "psp123"
+
+    // Create a map of form data for the login request
+    formData := url.Values{}
+    formData.Set("username", username)
+    formData.Set("password", password)
+
+    // Send a POST request to the router's login endpoint
+    resp, err := http.PostForm("http://"+routerIP+"/login", formData)
+    if err != nil {
+        return err
+    }
+    defer resp.Body.Close()
+
+    // Check the response status code
+    if resp.StatusCode != http.StatusOK {
+        return fmt.Errorf("login failed with status code: %d", resp.StatusCode)
+    }
+
+    return nil
+}
