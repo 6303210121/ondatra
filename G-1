@@ -1,0 +1,47 @@
+
+package main
+
+import (
+    "testing"
+
+    "github.com/ondatra/ondatratest"
+)
+
+func TestShowInterfaceCommand(t *testing.T) {
+    // Initialize the Ondatra test environment
+    env, err := ondatratest.NewEnv()
+    if err != nil {
+        t.Fatalf("Failed to create test environment: %v", err)
+    }
+    defer env.Close()
+
+    // Connect to the server with the provided credentials
+    serverConn, err := env.ConnectSSHWithUser("10.133.35.138", "tcs", "tcs123")
+    if err != nil {
+        t.Fatalf("Failed to connect to server: %v", err)
+    }
+    defer serverConn.Close()
+
+    // On the server, connect to the router with the provided credentials
+    routerConn, err := serverConn.ConnectSSHWithUser("10.133.35.158", "admin", "tcs123")
+    if err != nil {
+        t.Fatalf("Failed to connect to router: %v", err)
+    }
+    defer routerConn.Close()
+
+    // Send the "show interface" command
+    output, err := routerConn.SendCommand("show interface")
+    if err != nil {
+        t.Fatalf("Failed to send command: %v", err)
+    }
+
+    // Parse the command output (replace with your parsing logic)
+    // Example:
+    // parsedOutput := parseShowInterfaceOutput(output)
+
+    // Write assertions to validate the output (replace with your validation logic)
+    // Example:
+    // if parsedOutput != expectedOutput {
+    //     t.Errorf("Output does not match expected: got %v, expected %v", parsedOutput, expectedOutput)
+    // }
+}
