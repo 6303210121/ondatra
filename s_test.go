@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func main2() {
+func main() {
 
         routerIP := "10.133.35.158"
         sshUsername := "admin"
