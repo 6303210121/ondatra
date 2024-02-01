@@ -45,10 +45,7 @@ func main() {
         fmt.Println("Logged into the router.")
         fmt.Printf("Interface Status:\n%s\n", output)
 }
-func Testsample2 (t *testing.T) {
-	//return "nil"
-        //ds
-}
+
 ======================================================================================================================
 
 func Testsample2(t *testing.T) {
