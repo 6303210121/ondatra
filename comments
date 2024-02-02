@@ -1,4 +1,1 @@
-# command-line-arguments
-sh_test.go:6:5: package Hello is not in std (/snap/go/10489/src/Hello)
-FAIL	command-line-arguments [setup failed]
-FAIL
+
