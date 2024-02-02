@@ -1,19 +1,26 @@
-package main
-import "testing"
-func TestFooer(t *testing.T) {
-    result := Fooer(3)
-    if result != "Foo" {
-    t.Errorf("Result was incorrect, got: %s, want: %s.", result, "Foo")
+package greetings
+
+import (
+    "testing"
+    "regexp"
+)
+
+// TestHelloName calls greetings.Hello with a name, checking
+// for a valid return value.
+func TestHelloName(t *testing.T) {
+    name := "Gladys"
+    want := regexp.MustCompile(`\b`+name+`\b`)
+    msg, err := Hello("Gladys")
+    if !want.MatchString(msg) || err != nil {
+        t.Fatalf(`Hello("Gladys") = %q, %v, want match for %#q, nil`, msg, err, want)
     }
 }
 
-func TestFooer2(t *testing.T) {
-            input := 3
-            result := Fooer(3)
-            t.Logf("The input was %d", input)
-            if result != "Foo" {
-                t.Errorf("Result was incorrect, got: %s, want: %s.", result, "Foo")
-            }
-            t.Fatalf("Stop the test now, we have seen enough")
-            t.Error("This won't be executed")
-        }
+// TestHelloEmpty calls greetings.Hello with an empty string,
+// checking for an error.
+func TestHelloEmpty(t *testing.T) {
+    msg, err := Hello("")
+    if msg != "" || err == nil {
+        t.Fatalf(`Hello("") = %q, %v, want "", error`, msg, err)
+    }
+}
