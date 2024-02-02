@@ -1,1 +1,5 @@
 
+debug.go:41:2: no required module provides package github.com/openconfig/ondatra/internal/events; to add it:
+	go get github.com/openconfig/ondatra/internal/events
+found packages debug (debug.go) and main (sg_test.go) in /home/tcs/ondatra1/ondatra/debug/s3
+found packages debug (debug.go) and main (hello.go) in /home/tcs/ondatra1/ondatra/debug/s3/pck
