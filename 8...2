@@ -1,3 +1,4 @@
+
 package main
 
 import (
@@ -8,11 +9,37 @@ import (
 func main() {
 	cmd := exec.Command("show", "version")
 
-	output, err := cmd.CombinedOutput()
+	stdout, err := cmd.StdoutPipe()
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Println("Error creating StdoutPipe:", err)
 		return
 	}
 
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		fmt.Println("Error creating StderrPipe:", err)
+		return
+	}
+
+	if err := cmd.Start(); err != nil {
+		fmt.Println("Error starting command:", err)
+		return
+	}
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Println("Error running command:", err)
+		return
+	}
+
+	fmt.Println("Standard Output:")
 	fmt.Println(string(output))
+
+	fmt.Println("Standard Error:")
+	errOutput, err := io.ReadAll(stderr)
+	if err != nil {
+		fmt.Println("Error reading stderr:", err)
+		return
+	}
+	fmt.Println(string(errOutput))
 }
