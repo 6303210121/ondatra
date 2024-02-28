@@ -1,0 +1,55 @@
+To install Docker on Ubuntu 20.04.6, you can follow these steps:
+
+1. **Update Package Index**: First, ensure that the package index is up-to-date by running the following command:
+   ```
+   sudo apt update
+   ```
+
+2. **Install Prerequisites**: Install packages to allow apt to use a repository over HTTPS:
+   ```
+   sudo apt install -y \
+       apt-transport-https \
+       ca-certificates \
+       curl \
+       gnupg \
+       lsb-release
+   ```
+
+3. **Add Docker's Official GPG Key**: Add Docker's official GPG key to verify the authenticity of downloaded Docker packages:
+   ```
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   ```
+
+4. **Set Up Docker Repository**: Add the Docker repository to your system's APT sources:
+   ```
+   echo \
+     "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   ```
+
+5. **Update Package Index Again**: Update the package index once more to include the Docker packages:
+   ```
+   sudo apt update
+   ```
+
+6. **Install Docker Engine**: Install the latest version of Docker Engine and containerd:
+   ```
+   sudo apt install -y docker-ce docker-ce-cli containerd.io
+   ```
+
+7. **Verify Installation**: Check that Docker is installed correctly by running the following command, which will display the Docker version:
+   ```
+   docker --version
+   ```
+
+8. **Add User to Docker Group (Optional)**: To allow your user to run Docker commands without sudo, add your user to the `docker` group:
+   ```
+   sudo usermod -aG docker $USER
+   ```
+
+9. **Restart Docker Service**: If you added your user to the `docker` group, you'll need to log out and back in for the changes to take effect. Additionally, you can restart the Docker service:
+   ```
+   sudo systemctl restart docker
+   ```
+
+That's it! Docker should now be installed and ready to use on your Ubuntu 20.04.6 system.
