@@ -1,0 +1,448 @@
+tmpfs           783M   32K  783M   1% /run/user/1000
+total           473G   86G  364G  20% -
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt install gnome-terminal
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for tcs: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+gnome-terminal is already the newest version (3.36.2-1ubuntu1~20.04).
+The following packages were automatically installed and are no longer required:
+  augeas-lenses ebtables g++-7 gir1.2-mutter-2 libargon2-0 libaugeas0 libbind9-160 libboost-date-time1.65.1 libboost-filesystem1.65.1
+  libboost-iostreams1.65.1 libboost-locale1.65.1 libboost-system1.65.1 libboost-thread1.65.1 libcapnp-0.6.1 libcdio17 libdns-export1100
+  libdns1100 libdouble-conversion1 libevent-2.1-6 libgdbm5 libgmime-3.0-0 libgnome-desktop-3-17 libgsoap-2.8.60 libgspell-1-1
+  libgweather-3-15 libhunspell-1.6-0 libip4tc0 libip6tc0 libiptc0 libirs160 libisc-export169 libisc169 libisccc160 libisccfg160 libisl19
+  libjs-sphinxdoc libjs-underscore libjson-c3 liblouis14 liblouisutdml8 liblvm2app2.2 liblvm2cmd2.02 liblwres160 libmagickcore-6.q16-3
+  libmagickcore-6.q16-3-extra libmagickwand-6.q16-3 libmozjs-52-0 libmutter-2-0 libnetcf1 libnetplan0 libnss-myhostname libntfs-3g88 libomp5
+  liborcus-0.13-0 libperl5.26 libpoppler73 libprocps6 libprotobuf-lite10 libprotobuf10 libpython-all-dev libpython3.6 libpython3.6-dev
+  libpython3.6-minimal libpython3.6-stdlib libqpdf21 libraw16 libreadline7 libsane1 libstdc++-7-dev libvpx5 libwxgtk3.0-0v5 libxen-4.9
+  libxenstore3.0 libxentoolcore1 libxmlb1 python-all python-all-dev python-asn1crypto python-cffi-backend python-configparser python-crypto
+  python-cryptography python-dbus python-entrypoints python-enum34 python-gi python-idna python-ipaddress python-keyring
+  python-secretstorage python-six python-wheel python-xdg python3-asn1crypto python3-netifaces python3-oauth python3-zope.interface
+  python3.6 python3.6-dev python3.6-minimal qemu-efi-aarch64 qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-mips
+  qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc qemu-user qemu-user-binfmt x11proto-input-dev x11proto-kb-dev
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 9 not upgraded.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$  sudo apt-get update
+Hit:1 http://in.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://security.ubuntu.com/ubuntu focal-security InRelease
+Hit:3 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu focal InRelease
+Hit:4 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:5 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease
+Reading package lists... Done
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+bash: version: No such file or directory
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ systemctl --user start docker-desktop
+Failed to start docker-desktop.service: Unit docker-desktop.service not found.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.6 LTS
+Release:	20.04
+Codename:	focal
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+The following packages were automatically installed and are no longer required:
+  augeas-lenses ebtables g++-7 gir1.2-mutter-2 libargon2-0 libaugeas0 libbind9-160 libboost-date-time1.65.1 libboost-filesystem1.65.1
+  libboost-iostreams1.65.1 libboost-locale1.65.1 libboost-system1.65.1 libboost-thread1.65.1 libcapnp-0.6.1 libcdio17 libdns-export1100
+  libdns1100 libdouble-conversion1 libevent-2.1-6 libgdbm5 libgmime-3.0-0 libgnome-desktop-3-17 libgsoap-2.8.60 libgspell-1-1
+  libgweather-3-15 libhunspell-1.6-0 libip4tc0 libip6tc0 libiptc0 libirs160 libisc-export169 libisc169 libisccc160 libisccfg160 libisl19
+  libjs-sphinxdoc libjs-underscore libjson-c3 liblouis14 liblouisutdml8 liblvm2app2.2 liblvm2cmd2.02 liblwres160 libmagickcore-6.q16-3
+  libmagickcore-6.q16-3-extra libmagickwand-6.q16-3 libmozjs-52-0 libmutter-2-0 libnetcf1 libnetplan0 libnss-myhostname libntfs-3g88 libomp5
+  liborcus-0.13-0 libperl5.26 libpoppler73 libprocps6 libprotobuf-lite10 libprotobuf10 libpython-all-dev libpython3.6 libpython3.6-dev
+  libpython3.6-minimal libpython3.6-stdlib libqpdf21 libraw16 libreadline7 libsane1 libstdc++-7-dev libvpx5 libwxgtk3.0-0v5 libxen-4.9
+  libxenstore3.0 libxentoolcore1 libxmlb1 python-all python-all-dev python-asn1crypto python-cffi-backend python-configparser python-crypto
+  python-cryptography python-dbus python-entrypoints python-enum34 python-gi python-idna python-ipaddress python-keyring
+  python-secretstorage python-six python-wheel python-xdg python3-asn1crypto python3-netifaces python3-oauth python3-zope.interface
+  python3.6 python3.6-dev python3.6-minimal qemu-efi-aarch64 qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-mips
+  qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc qemu-user qemu-user-binfmt x11proto-input-dev x11proto-kb-dev
+Use 'sudo apt autoremove' to remove them.
+The following packages will be upgraded:
+  dns-root-data less libssl-dev libssl1.1 ltrace openssl tcpdump unzip virtualbox-dkms
+9 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,020 kB of archives.
+After this operation, 13.3 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 less amd64 551-1ubuntu0.2 [123 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 libssl-dev amd64 1.1.1f-1ubuntu2.22 [1,586 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 libssl1.1 amd64 1.1.1f-1ubuntu2.22 [1,323 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 openssl amd64 1.1.1f-1ubuntu2.22 [622 kB]
+Get:5 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 ltrace amd64 0.7.3-6.1ubuntu1.1 [123 kB]                                  
+Get:6 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 tcpdump amd64 4.9.3-4ubuntu0.3 [370 kB]                                   
+Get:7 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 dns-root-data all 2023112702~ubuntu0.20.04.1 [5,308 B]                    
+Get:8 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 unzip amd64 6.0-25ubuntu1.2 [169 kB]                                      
+Get:9 http://in.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 virtualbox-dkms amd64 6.1.50-dfsg-1~ubuntu1.20.04.1 [699 kB]        
+Fetched 5,020 kB in 8s (595 kB/s)                                                                                                            
+Preconfiguring packages ...
+(Reading database ... 256641 files and directories currently installed.)
+Preparing to unpack .../0-less_551-1ubuntu0.2_amd64.deb ...
+Unpacking less (551-1ubuntu0.2) over (551-1ubuntu0.1) ...
+Preparing to unpack .../1-libssl-dev_1.1.1f-1ubuntu2.22_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1f-1ubuntu2.22) over (1.1.1f-1ubuntu2.21) ...
+Preparing to unpack .../2-libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb ...
+Unpacking libssl1.1:amd64 (1.1.1f-1ubuntu2.22) over (1.1.1f-1ubuntu2.21) ...
+Preparing to unpack .../3-openssl_1.1.1f-1ubuntu2.22_amd64.deb ...
+Unpacking openssl (1.1.1f-1ubuntu2.22) over (1.1.1f-1ubuntu2.21) ...
+Preparing to unpack .../4-ltrace_0.7.3-6.1ubuntu1.1_amd64.deb ...
+Unpacking ltrace (0.7.3-6.1ubuntu1.1) over (0.7.3-6.1ubuntu1) ...
+Preparing to unpack .../5-tcpdump_4.9.3-4ubuntu0.3_amd64.deb ...
+Unpacking tcpdump (4.9.3-4ubuntu0.3) over (4.9.3-4ubuntu0.2) ...
+Preparing to unpack .../6-dns-root-data_2023112702~ubuntu0.20.04.1_all.deb ...
+Unpacking dns-root-data (2023112702~ubuntu0.20.04.1) over (2019052802) ...
+Preparing to unpack .../7-unzip_6.0-25ubuntu1.2_amd64.deb ...
+Unpacking unzip (6.0-25ubuntu1.2) over (6.0-25ubuntu1.1) ...
+Preparing to unpack .../8-virtualbox-dkms_6.1.50-dfsg-1~ubuntu1.20.04.1_amd64.deb ...
+
+-------- Uninstall Beginning --------
+Module:  virtualbox
+Version: 6.1.48
+Kernel:  5.4.0-171-generic (x86_64)
+-------------------------------------
+
+Status: Before uninstall, this module version was ACTIVE on this kernel.
+
+vboxdrv.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-171-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+
+vboxnetadp.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-171-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+
+vboxnetflt.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-171-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+depmod.......
+
+DKMS: uninstall completed.
+
+-------- Uninstall Beginning --------
+Module:  virtualbox
+Version: 6.1.48
+Kernel:  5.4.0-172-generic (x86_64)
+-------------------------------------
+
+Status: Before uninstall, this module version was ACTIVE on this kernel.
+
+vboxdrv.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-172-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+
+vboxnetadp.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-172-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+
+vboxnetflt.ko:
+ - Uninstallation
+   - Deleting from: /lib/modules/5.4.0-172-generic/updates/dkms/
+ - Original module
+   - No original module was found for this module on this kernel.
+   - Use the dkms install command to reinstall any previous module version.
+
+depmod........
+
+DKMS: uninstall completed.
+
+------------------------------
+Deleting module version: 6.1.48
+completely from the DKMS tree.
+------------------------------
+Done.
+Unpacking virtualbox-dkms (6.1.50-dfsg-1~ubuntu1.20.04.1) over (6.1.48-dfsg-1~ubuntu1.20.04.1) ...
+Setting up libssl1.1:amd64 (1.1.1f-1ubuntu2.22) ...
+Setting up unzip (6.0-25ubuntu1.2) ...
+Setting up ltrace (0.7.3-6.1ubuntu1.1) ...
+Setting up less (551-1ubuntu0.2) ...
+Setting up dns-root-data (2023112702~ubuntu0.20.04.1) ...
+Setting up libssl-dev:amd64 (1.1.1f-1ubuntu2.22) ...
+Setting up virtualbox-dkms (6.1.50-dfsg-1~ubuntu1.20.04.1) ...
+Loading new virtualbox-6.1.50 DKMS files...
+Building for 5.4.0-172-generic
+Building initial module for 5.4.0-172-generic
+Secure Boot not enabled on this system.
+Done.
+
+vboxdrv.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.4.0-172-generic/updates/dkms/
+
+vboxnetadp.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.4.0-172-generic/updates/dkms/
+
+vboxnetflt.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.4.0-172-generic/updates/dkms/
+
+depmod...
+
+DKMS: install completed.
+Setting up openssl (1.1.1f-1ubuntu2.22) ...
+Setting up tcpdump (4.9.3-4ubuntu0.3) ...
+Installing new version of config file /etc/apparmor.d/usr.sbin.tcpdump ...
+Processing triggers for libc-bin (2.31-0ubuntu9.14) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.6 LTS
+Release:	20.04
+Codename:	focal
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt install -y \
+>        apt-transport-https \
+>        ca-certificates \
+>        curl \
+>        gnupg \
+>        lsb-release
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+ca-certificates is already the newest version (20230311ubuntu0.20.04.1).
+gnupg is already the newest version (2.2.19-3ubuntu2.2).
+apt-transport-https is already the newest version (2.0.10).
+The following packages were automatically installed and are no longer required:
+  augeas-lenses ebtables g++-7 gir1.2-mutter-2 libargon2-0 libaugeas0 libbind9-160 libboost-date-time1.65.1 libboost-filesystem1.65.1
+  libboost-iostreams1.65.1 libboost-locale1.65.1 libboost-system1.65.1 libboost-thread1.65.1 libcapnp-0.6.1 libcdio17 libdns-export1100
+  libdns1100 libdouble-conversion1 libevent-2.1-6 libgdbm5 libgmime-3.0-0 libgnome-desktop-3-17 libgsoap-2.8.60 libgspell-1-1
+  libgweather-3-15 libhunspell-1.6-0 libip4tc0 libip6tc0 libiptc0 libirs160 libisc-export169 libisc169 libisccc160 libisccfg160 libisl19
+  libjs-sphinxdoc libjs-underscore libjson-c3 liblouis14 liblouisutdml8 liblvm2app2.2 liblvm2cmd2.02 liblwres160 libmagickcore-6.q16-3
+  libmagickcore-6.q16-3-extra libmagickwand-6.q16-3 libmozjs-52-0 libmutter-2-0 libnetcf1 libnetplan0 libnss-myhostname libntfs-3g88 libomp5
+  liborcus-0.13-0 libperl5.26 libpoppler73 libprocps6 libprotobuf-lite10 libprotobuf10 libpython-all-dev libpython3.6 libpython3.6-dev
+  libpython3.6-minimal libpython3.6-stdlib libqpdf21 libraw16 libreadline7 libsane1 libstdc++-7-dev libvpx5 libwxgtk3.0-0v5 libxen-4.9
+  libxenstore3.0 libxentoolcore1 libxmlb1 python-all python-all-dev python-asn1crypto python-cffi-backend python-configparser python-crypto
+  python-cryptography python-dbus python-entrypoints python-enum34 python-gi python-idna python-ipaddress python-keyring
+  python-secretstorage python-six python-wheel python-xdg python3-asn1crypto python3-netifaces python3-oauth python3-zope.interface
+  python3.6 python3.6-dev python3.6-minimal qemu-efi-aarch64 qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-mips
+  qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc qemu-user qemu-user-binfmt x11proto-input-dev x11proto-kb-dev
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  curl
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 161 kB of archives.
+After this operation, 413 kB of additional disk space will be used.
+Get:1 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 curl amd64 7.68.0-1ubuntu2.21 [161 kB]
+Fetched 161 kB in 2s (106 kB/s)
+Selecting previously unselected package curl.
+(Reading database ... 256641 files and directories currently installed.)
+Preparing to unpack .../curl_7.68.0-1ubuntu2.21_amd64.deb ...
+Unpacking curl (7.68.0-1ubuntu2.21) ...
+Setting up curl (7.68.0-1ubuntu2.21) ...
+Processing triggers for man-db (2.9.1-1) ...
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ echo \
+>      "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+>      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt update
+Get:1 https://download.docker.com/linux/ubuntu focal InRelease [57.7 kB]
+Get:2 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages [38.0 kB]                                                         
+Hit:3 http://security.ubuntu.com/ubuntu focal-security InRelease                                                                  
+Hit:4 http://in.archive.ubuntu.com/ubuntu focal InRelease                                        
+Hit:5 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu focal InRelease
+Hit:6 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:7 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease
+Fetched 95.6 kB in 1s (67.1 kB/s)
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt install -y docker-ce docker-ce-cli containerd.io
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  augeas-lenses ebtables g++-7 gir1.2-mutter-2 libargon2-0 libaugeas0 libbind9-160 libboost-date-time1.65.1 libboost-filesystem1.65.1
+  libboost-iostreams1.65.1 libboost-locale1.65.1 libboost-system1.65.1 libboost-thread1.65.1 libcapnp-0.6.1 libcdio17 libdns-export1100
+  libdns1100 libdouble-conversion1 libevent-2.1-6 libgdbm5 libgmime-3.0-0 libgnome-desktop-3-17 libgsoap-2.8.60 libgspell-1-1
+  libgweather-3-15 libhunspell-1.6-0 libip4tc0 libip6tc0 libiptc0 libirs160 libisc-export169 libisc169 libisccc160 libisccfg160 libisl19
+  libjs-sphinxdoc libjs-underscore libjson-c3 liblouis14 liblouisutdml8 liblvm2app2.2 liblvm2cmd2.02 liblwres160 libmagickcore-6.q16-3
+  libmagickcore-6.q16-3-extra libmagickwand-6.q16-3 libmozjs-52-0 libmutter-2-0 libnetcf1 libnetplan0 libnss-myhostname libntfs-3g88 libomp5
+  liborcus-0.13-0 libperl5.26 libpoppler73 libprocps6 libprotobuf-lite10 libprotobuf10 libpython-all-dev libpython3.6 libpython3.6-dev
+  libpython3.6-minimal libpython3.6-stdlib libqpdf21 libraw16 libreadline7 libsane1 libstdc++-7-dev libvpx5 libwxgtk3.0-0v5 libxen-4.9
+  libxenstore3.0 libxentoolcore1 libxmlb1 python-all python-all-dev python-asn1crypto python-cffi-backend python-configparser python-crypto
+  python-cryptography python-dbus python-entrypoints python-enum34 python-gi python-idna python-ipaddress python-keyring
+  python-secretstorage python-six python-wheel python-xdg python3-asn1crypto python3-netifaces python3-oauth python3-zope.interface
+  python3.6 python3.6-dev python3.6-minimal qemu-efi-aarch64 qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-mips
+  qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc qemu-user qemu-user-binfmt ubuntu-fan x11proto-input-dev
+  x11proto-kb-dev
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  docker-buildx-plugin docker-ce-rootless-extras docker-compose-plugin slirp4netns
+Suggested packages:
+  aufs-tools cgroupfs-mount | cgroup-lite
+The following packages will be REMOVED:
+  containerd docker.io runc
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin slirp4netns
+0 upgraded, 7 newly installed, 3 to remove and 0 not upgraded.
+Need to get 117 MB of archives.
+After this operation, 154 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu focal/stable amd64 containerd.io amd64 1.6.28-1 [29.6 MB]
+Get:2 http://in.archive.ubuntu.com/ubuntu focal/universe amd64 slirp4netns amd64 0.4.3-1 [74.3 kB]
+Get:3 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-buildx-plugin amd64 0.12.1-1~ubuntu.20.04~focal [28.2 MB]           
+Get:4 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-ce-cli amd64 5:25.0.3-1~ubuntu.20.04~focal [13.7 MB]                
+Get:5 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-ce amd64 5:25.0.3-1~ubuntu.20.04~focal [24.3 MB]                    
+Get:6 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-ce-rootless-extras amd64 5:25.0.3-1~ubuntu.20.04~focal [9,324 kB]   
+Get:7 https://download.docker.com/linux/ubuntu focal/stable amd64 docker-compose-plugin amd64 2.24.6-1~ubuntu.20.04~focal [12.1 MB]          
+Fetched 117 MB in 2min 45s (710 kB/s)                                                                                                        
+(Reading database ... 256648 files and directories currently installed.)
+Removing docker.io (24.0.5-0ubuntu1~20.04.1) ...
+'/usr/share/docker.io/contrib/nuke-graph-directory.sh' -> '/var/lib/docker/nuke-graph-directory.sh'
+Removing containerd (1.7.2-0ubuntu1~20.04.1) ...
+Removing runc (1.1.7-0ubuntu1~20.04.2) ...
+Selecting previously unselected package containerd.io.
+(Reading database ... 256377 files and directories currently installed.)
+Preparing to unpack .../0-containerd.io_1.6.28-1_amd64.deb ...
+Unpacking containerd.io (1.6.28-1) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../1-docker-buildx-plugin_0.12.1-1~ubuntu.20.04~focal_amd64.deb ...
+Unpacking docker-buildx-plugin (0.12.1-1~ubuntu.20.04~focal) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../2-docker-ce-cli_5%3a25.0.3-1~ubuntu.20.04~focal_amd64.deb ...
+Unpacking docker-ce-cli (5:25.0.3-1~ubuntu.20.04~focal) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../3-docker-ce_5%3a25.0.3-1~ubuntu.20.04~focal_amd64.deb ...
+Unpacking docker-ce (5:25.0.3-1~ubuntu.20.04~focal) ...
+Selecting previously unselected package docker-ce-rootless-extras.
+Preparing to unpack .../4-docker-ce-rootless-extras_5%3a25.0.3-1~ubuntu.20.04~focal_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:25.0.3-1~ubuntu.20.04~focal) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../5-docker-compose-plugin_2.24.6-1~ubuntu.20.04~focal_amd64.deb ...
+Unpacking docker-compose-plugin (2.24.6-1~ubuntu.20.04~focal) ...
+Selecting previously unselected package slirp4netns.
+Preparing to unpack .../6-slirp4netns_0.4.3-1_amd64.deb ...
+Unpacking slirp4netns (0.4.3-1) ...
+Setting up slirp4netns (0.4.3-1) ...
+Setting up docker-buildx-plugin (0.12.1-1~ubuntu.20.04~focal) ...
+Setting up containerd.io (1.6.28-1) ...
+Setting up docker-compose-plugin (2.24.6-1~ubuntu.20.04~focal) ...
+Setting up docker-ce-cli (5:25.0.3-1~ubuntu.20.04~focal) ...
+Setting up docker-ce-rootless-extras (5:25.0.3-1~ubuntu.20.04~focal) ...
+Setting up docker-ce (5:25.0.3-1~ubuntu.20.04~focal) ...
+Installing new version of config file /etc/default/docker ...
+Installing new version of config file /etc/init.d/docker ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for ureadahead (0.100.0-21) ...
+ureadahead will be reprofiled on next reboot
+Processing triggers for systemd (245.4-4ubuntu3.23) ...
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ docker --version
+Docker version 25.0.3, build 4debf41
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo usermod -aG docker $USER
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo systemctl restart docker
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ docker version
+Client: Docker Engine - Community
+ Version:           25.0.3
+ API version:       1.44
+ Go version:        go1.21.6
+ Git commit:        4debf41
+ Built:             Tue Feb  6 21:14:17 2024
+ OS/Arch:           linux/amd64
+ Context:           default
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ docker --version
+Docker version 25.0.3, build 4debf41
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo systemcl start docker
+sudo: systemcl: command not found
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/home/tcs/go/bin:/home/tcs/go/bin
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ ps -p 1
+    PID TTY          TIME CMD
+      1 ?        00:00:07 systemd
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo service docker start
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo service status docker
+status: unrecognized service
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo service docker stop
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo service docker disable
+Usage: service docker {start|stop|restart|status}
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt remove docker-ce docker-ce-cli containerd.io
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  augeas-lenses docker-buildx-plugin docker-ce-rootless-extras docker-compose-plugin ebtables g++-7 gir1.2-mutter-2 libargon2-0 libaugeas0
+  libbind9-160 libboost-date-time1.65.1 libboost-filesystem1.65.1 libboost-iostreams1.65.1 libboost-locale1.65.1 libboost-system1.65.1
+  libboost-thread1.65.1 libcapnp-0.6.1 libcdio17 libdns-export1100 libdns1100 libdouble-conversion1 libevent-2.1-6 libgdbm5 libgmime-3.0-0
+  libgnome-desktop-3-17 libgsoap-2.8.60 libgspell-1-1 libgweather-3-15 libhunspell-1.6-0 libip4tc0 libip6tc0 libiptc0 libirs160
+  libisc-export169 libisc169 libisccc160 libisccfg160 libisl19 libjs-sphinxdoc libjs-underscore libjson-c3 liblouis14 liblouisutdml8
+  liblvm2app2.2 liblvm2cmd2.02 liblwres160 libmagickcore-6.q16-3 libmagickcore-6.q16-3-extra libmagickwand-6.q16-3 libmozjs-52-0
+  libmutter-2-0 libnetcf1 libnetplan0 libnss-myhostname libntfs-3g88 libomp5 liborcus-0.13-0 libperl5.26 libpoppler73 libprocps6
+  libprotobuf-lite10 libprotobuf10 libpython-all-dev libpython3.6 libpython3.6-dev libpython3.6-minimal libpython3.6-stdlib libqpdf21
+  libraw16 libreadline7 libsane1 libstdc++-7-dev libvpx5 libwxgtk3.0-0v5 libxen-4.9 libxenstore3.0 libxentoolcore1 libxmlb1 pigz python-all
+  python-all-dev python-asn1crypto python-cffi-backend python-configparser python-crypto python-cryptography python-dbus python-entrypoints
+  python-enum34 python-gi python-idna python-ipaddress python-keyring python-secretstorage python-six python-wheel python-xdg
+  python3-asn1crypto python3-netifaces python3-oauth python3-zope.interface python3.6 python3.6-dev python3.6-minimal qemu-efi-aarch64
+  qemu-efi-arm qemu-slof qemu-system qemu-system-arm qemu-system-mips qemu-system-misc qemu-system-ppc qemu-system-s390x qemu-system-sparc
+  qemu-user qemu-user-binfmt slirp4netns ubuntu-fan x11proto-input-dev x11proto-kb-dev
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  containerd.io docker-ce docker-ce-cli
+0 upgraded, 0 newly installed, 3 to remove and 0 not upgraded.
+After this operation, 260 MB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 256619 files and directories currently installed.)
+Removing docker-ce (5:25.0.3-1~ubuntu.20.04~focal) ...
+Removing containerd.io (1.6.28-1) ...
+Removing docker-ce-cli (5:25.0.3-1~ubuntu.20.04~focal) ...
+Processing triggers for man-db (2.9.1-1) ...
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo rm -rf /etc/docker /var/lib/docker
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo deluser $USER docker
+Removing user `tcs' from group `docker' ...
+Done.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ sudo apt update
+Hit:1 https://download.docker.com/linux/ubuntu focal InRelease
+Hit:2 http://in.archive.ubuntu.com/ubuntu focal InRelease                                                                                    
+Hit:3 http://security.ubuntu.com/ubuntu focal-security InRelease                                                                             
+Hit:4 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu focal InRelease
+Get:5 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Hit:6 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease
+Fetched 114 kB in 2s (55.6 kB/s)
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ docker --version
+bash: /usr/bin/docker: No such file or directory
+tcs@tcs-HP-Compaq-Elite-8300-SFF:~$ 
+
